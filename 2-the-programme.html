@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STCFC — Design 2: Clean White</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--surface:#FAFAFA;--paper:#F6F6F6;
+  --text:#111111;--muted:#777777;--light:#EEEEEE;
+  --border:#E2E2E2;--red:#CC1111;--red2:#E01515;
+  --red-bg:#FEF2F2;--red-border:rgba(204,17,17,.2);
+}
+body{background:var(--bg);color:var(--text);font-family:'Source Sans 3',sans-serif;overflow-x:hidden}
+
+/* TICKER */
+.ticker{background:var(--red);overflow:hidden;padding:7px 0}
+.ticker-track{display:flex;gap:3rem;animation:tick 28s linear infinite;white-space:nowrap;font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tdot{color:rgba(255,255,255,.4);margin:0 .5rem}
+
+/* NAV */
+nav{background:#fff;border-bottom:3px solid var(--red);padding:0 3rem;height:68px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-circle{width:40px;height:40px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display';font-size:13px;font-weight:900;color:#fff}
+.brand{font-family:'Playfair Display';font-size:18px;font-weight:800;color:var(--text)}
+.brand em{color:var(--red);font-style:normal}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;transition:color .18s;padding-bottom:3px;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--text);border-bottom-color:var(--red)}
+.nav-btn{background:var(--red);color:#fff!important;padding:8px 20px;border-radius:5px;border:none!important}
+.nav-btn:hover{opacity:.85}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;border-bottom:1px solid var(--border)}
+.hero-left{padding:5rem 3rem 4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);background:#fff}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;color:var(--red);font-size:11.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-tag-line{width:28px;height:2px;background:var(--red)}
+.hero-title{font-family:'Playfair Display';font-size:clamp(3.2rem,5.5vw,5.2rem);font-weight:900;line-height:1;letter-spacing:-.5px;margin-bottom:1.25rem}
+.hero-title em{color:var(--red);font-style:italic}
+.rule{width:56px;height:3px;background:var(--red);margin-bottom:1.5rem}
+.hero-body{color:var(--muted);font-size:1.05rem;line-height:1.72;max-width:440px;margin-bottom:2.5rem}
+.actions{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn-fill{background:var(--red);color:#fff;padding:13px 26px;border-radius:5px;font-weight:700;font-size:14.5px;text-decoration:none;transition:opacity .18s}
+.btn-fill:hover{opacity:.84}
+.btn-out{border:2px solid var(--text);color:var(--text);padding:11px 24px;border-radius:5px;font-weight:700;font-size:14.5px;text-decoration:none;transition:all .18s}
+.btn-out:hover{background:var(--text);color:#fff}
+.hero-right{background:var(--red);display:flex;flex-direction:column;padding:3rem;color:#fff}
+.aside-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.15)}
+.next-fix{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;backdrop-filter:blur(8px)}
+.fix-label{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.625rem}
+.fix-teams{font-family:'Playfair Display';font-size:1.5rem;font-weight:900;line-height:1.15;margin-bottom:.5rem}
+.fix-when{font-size:13.5px;color:rgba(255,255,255,.65);font-style:italic}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:auto}
+.hstat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:1.1rem;text-align:center}
+.hstat-n{font-family:'Playfair Display';font-size:2.25rem;font-weight:900;color:#fff;line-height:1}
+.hstat-l{font-size:11px;color:rgba(255,255,255,.6);font-style:italic;margin-top:3px}
+
+/* WRAP */
+.wrap{max-width:1200px;margin:0 auto;padding:4.5rem 3rem}
+.sec-rule{display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem}
+.rule-line{flex:1;height:2px;background:var(--text)}
+.rule-title{font-family:'Playfair Display';font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:2px;white-space:nowrap}
+.rule-more{color:var(--red);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+
+/* FIXTURES */
+.fix-list{border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.fix{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);transition:background .18s;cursor:pointer}
+.fix:last-child{border-bottom:none}
+.fix:hover{background:var(--red-bg)}
+.fix-team{font-weight:700;font-size:15px}
+.fix-team.r{text-align:right}
+.fix-mid{text-align:center}
+.fix-vs{font-family:'Playfair Display';font-size:1.05rem;font-weight:900;color:var(--red);font-style:italic}
+.fix-date{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
+.fix-badge{display:inline-block;margin-top:5px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--red);color:#fff;border-radius:3px;padding:2px 8px}
+.fix-badge.away{background:var(--muted)}
+
+/* NEWS */
+.news-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem}
+.news-left{display:flex;flex-direction:column;gap:1.5rem}
+.card-big{border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:box-shadow .18s}
+.card-big:hover{box-shadow:0 4px 24px rgba(204,17,17,.12);border-color:var(--red)}
+.card-big-img{width:100%;aspect-ratio:16/7;background:linear-gradient(135deg,#4a0a0a,#2a0505);position:relative}
+.card-big-img::after{content:'FEATURED';position:absolute;top:1rem;left:1rem;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 10px;border-radius:3px}
+.card-big-body{padding:1.5rem}
+.card-tag{font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.card-big-title{font-family:'Playfair Display';font-size:1.55rem;font-weight:800;line-height:1.2;margin-bottom:8px}
+.card-big-body p{color:var(--muted);font-size:14px;line-height:1.65}
+.card-date{font-size:12px;color:var(--muted);margin-top:12px;padding-top:12px;border-top:1px solid var(--light)}
+.news-right{display:flex;flex-direction:column;gap:1rem}
+.card-sm{border:1px solid var(--border);border-radius:8px;padding:1.25rem;cursor:pointer;transition:border-color .18s}
+.card-sm:hover{border-color:var(--red)}
+.card-sm-title{font-family:'Playfair Display';font-size:1.05rem;font-weight:800;line-height:1.25;margin-bottom:6px}
+.card-sm-date{font-size:12px;color:var(--muted)}
+
+/* ABOUT STRIP */
+.about{background:var(--red);padding:5rem 3rem}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1rem}
+.about-title{font-family:'Playfair Display';font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;line-height:1;margin-bottom:1.25rem}
+.about-rule{width:48px;height:3px;background:#fff;margin-bottom:1.5rem}
+.about-body{color:rgba(255,255,255,.7);font-size:15px;line-height:1.8;font-style:italic}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:.875rem}
+.astat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:1.5rem;text-align:center}
+.astat-n{font-family:'Playfair Display';font-size:3rem;font-weight:900;color:#fff;line-height:1}
+.astat-l{font-size:11.5px;color:rgba(255,255,255,.6);font-style:italic;margin-top:4px}
+
+/* SPONSORS */
+.sp{padding:3.5rem 3rem;background:var(--surface)}
+.sp-inner{max-width:1200px;margin:0 auto}
+.sp-label{text-align:center;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.sp-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.sp-item{border:1px solid var(--border);border-radius:6px;padding:12px 24px;font-size:13.5px;font-weight:700;color:var(--muted);background:#fff;cursor:pointer;transition:all .18s}
+.sp-item:hover{border-color:var(--red);color:var(--red)}
+
+/* CTA */
+.cta{background:var(--text);padding:5rem 3rem;text-align:center}
+.cta-title{font-family:'Playfair Display';font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;color:#fff;margin-bottom:.75rem;line-height:1.05}
+.cta-title em{color:var(--red2);font-style:italic}
+.cta-sub{color:rgba(255,255,255,.55);font-style:italic;font-size:1.05rem;margin-bottom:2rem}
+.btn-white{background:#fff;color:var(--red);padding:13px 30px;border-radius:5px;font-weight:700;font-size:15px;text-decoration:none;transition:opacity .18s}
+.btn-white:hover{opacity:.9}
+
+/* FOOTER */
+footer{background:var(--text);border-top:1px solid rgba(255,255,255,.08);padding:2.5rem 3rem}
+.foot{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.foot-copy{color:rgba(255,255,255,.3);font-size:13px}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{color:rgba(255,255,255,.35);font-size:13px;text-decoration:none;transition:color .18s}
+.foot-links a:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Next: Steyning Town vs Horsham FC — Sat 21 Jun, 15:00</span><span class="tdot">◆</span>
+    <span>500+ Players · 20+ Teams · 2-Star Accredited</span><span class="tdot">◆</span>
+    <span>Mini-Kickers Registration Now Open</span><span class="tdot">◆</span>
+    <span>Next: Steyning Town vs Horsham FC — Sat 21 Jun, 15:00</span><span class="tdot">◆</span>
+    <span>500+ Players · 20+ Teams · 2-Star Accredited</span><span class="tdot">◆</span>
+    <span>Mini-Kickers Registration Now Open</span><span class="tdot">◆</span>
+  </div>
+</div>
+
+<nav>
+  <div class="logo">
+    <div class="logo-circle">ST</div>
+    <span class="brand">Steyning Town <em>FC</em></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li><li><a href="#">Teams</a></li><li><a href="#">Fixtures</a></li><li><a href="#">News</a></li><li><a href="#">Shop</a></li>
+    <li><a href="#" class="nav-btn">Join Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><div class="hero-tag-line"></div>2025–26 Season</div>
+    <h1 class="hero-title">West Sussex's Finest <em>Community</em> Club</h1>
+    <div class="rule"></div>
+    <p class="hero-body">From Mini-Kickers to Veterans, Steyning Town FC is home to 500+ players and 20+ teams. Proud, inclusive, and rooted in our community since 1892.</p>
+    <div class="actions">
+      <a href="#" class="btn-fill">Register Now</a>
+      <a href="#" class="btn-out">View Fixtures</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="aside-label">Next Fixture</div>
+    <div class="next-fix">
+      <div class="fix-label">First Team · Home · Sussex League</div>
+      <div class="fix-teams">Steyning Town<br>vs Horsham FC</div>
+      <div class="fix-when">Saturday 21 June · 3:00pm · Shooting Field</div>
+    </div>
+    <div class="aside-label" style="margin-top:1.5rem">Club at a Glance</div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">500+</div><div class="hstat-l">Players</div></div>
+      <div class="hstat"><div class="hstat-n">20+</div><div class="hstat-l">Teams</div></div>
+      <div class="hstat"><div class="hstat-n">★★</div><div class="hstat-l">Accredited</div></div>
+      <div class="hstat"><div class="hstat-n">1892</div><div class="hstat-l">Founded</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="sec-rule"><div class="rule-line"></div><span class="rule-title">Upcoming Fixtures</span><div class="rule-line"></div><a href="#" class="rule-more">Full Schedule →</a></div>
+  <div class="fix-list">
+    <div class="fix"><div class="fix-team">Steyning Town FC</div><div class="fix-mid"><div class="fix-vs">vs</div><div class="fix-date">Sat 21 Jun · 15:00</div><div><span class="fix-badge">Home</span></div></div><div class="fix-team r">Horsham FC</div></div>
+    <div class="fix"><div class="fix-team">Worthing FC</div><div class="fix-mid"><div class="fix-vs">vs</div><div class="fix-date">Sat 28 Jun · 14:00</div><div><span class="fix-badge away">Away</span></div></div><div class="fix-team r">Steyning Town FC</div></div>
+    <div class="fix"><div class="fix-team">Steyning Town FC</div><div class="fix-mid"><div class="fix-vs">vs</div><div class="fix-date">Sat 5 Jul · 15:00</div><div><span class="fix-badge">Home</span></div></div><div class="fix-team r">Lancing FC</div></div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:0">
+  <div class="sec-rule"><div class="rule-line"></div><span class="rule-title">Latest News</span><div class="rule-line"></div><a href="#" class="rule-more">All Stories →</a></div>
+  <div class="news-grid">
+    <div class="news-left">
+      <div class="card-big">
+        <div class="card-big-img"></div>
+        <div class="card-big-body">
+          <div class="card-tag">Club News</div>
+          <h3 class="card-big-title">Season 2025–26 Kicks Off With Record Registrations</h3>
+          <p>A record number of players have registered, with three new junior teams formed to meet demand.</p>
+          <div class="card-date">June 10, 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="news-right">
+      <div class="card-sm"><div class="card-tag">Match Report</div><div class="card-sm-title">First Team Victory Keeps Title Race Alive</div><div class="card-sm-date">June 7, 2025</div></div>
+      <div class="card-sm"><div class="card-tag">Community</div><div class="card-sm-title">Mini-Kickers Programme Expands for Summer</div><div class="card-sm-date">June 3, 2025</div></div>
+      <div class="card-sm"><div class="card-tag">Women's</div><div class="card-sm-title">Ladies Team Reaches County Cup Final</div><div class="card-sm-date">May 28, 2025</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-tag">Our Story</div>
+      <h2 class="about-title">More Than A Football Club</h2>
+      <div class="about-rule"></div>
+      <p class="about-body">Steyning Town has been the heartbeat of this town for over a century. We're more than a football club — we're a place where friendships are forged, young players find their feet, and the community comes together every weekend.</p>
+    </div>
+    <div class="about-stats">
+      <div class="astat"><div class="astat-n">500+</div><div class="astat-l">Registered Players</div></div>
+      <div class="astat"><div class="astat-n">20+</div><div class="astat-l">Active Teams</div></div>
+      <div class="astat"><div class="astat-n">★★</div><div class="astat-l">England Football</div></div>
+      <div class="astat"><div class="astat-n">133</div><div class="astat-l">Years of Football</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sp">
+  <div class="sp-inner">
+    <div class="sp-label">Our Partners</div>
+    <div class="sp-grid">
+      <div class="sp-item">Tates Motor Group</div><div class="sp-item">CALA Homes</div><div class="sp-item">Steyning Sports</div><div class="sp-item">Sussex Health</div><div class="sp-item">West Sussex Media</div><div class="sp-item">Local Partner</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2 class="cta-title">Ready to Pull On the <em>Shirt?</em></h2>
+  <p class="cta-sub">All ages. All abilities. Come and be part of something special.</p>
+  <a href="#" class="btn-white">Register Today</a>
+</div>
+
+<footer>
+  <div class="foot">
+    <p class="foot-copy">© 2025 Steyning Town Community FC. All rights reserved.</p>
+    <div class="foot-links"><a href="#">Privacy</a><a href="#">Contact</a><a href="#">Instagram</a><a href="#">Facebook</a></div>
+  </div>
+</footer>
+</body>
+</html>

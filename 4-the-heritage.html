@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STCFC — Design 4: The Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FDFAF7;--paper:#F8F3EE;--parchment:#F0E8DE;
+  --text:#1A1210;--muted:#8A7A70;--light:#E0D8D0;
+  --border:#D8CEC5;--red:#9B1C1C;--red2:#C22020;
+  --red-light:#FDF0F0;--white:#FFFFFF;
+}
+body{background:var(--cream);color:var(--text);font-family:'Lora',Georgia,serif;overflow-x:hidden}
+
+/* SUBTLE NOISE */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+
+/* TOP BAR */
+.topbar{background:var(--red);color:rgba(255,255,255,.7);font-family:'Oswald';font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;text-align:center;padding:7px 1rem}
+
+/* NAV */
+nav{background:var(--paper);border-bottom:3px solid var(--red);padding:0 3rem;height:70px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.logo{display:flex;align-items:center;gap:16px}
+.logo-shield{flex-shrink:0}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:'Oswald';font-size:19px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text)}
+.brand-sub{font-family:'Lora';font-size:10px;font-style:italic;color:var(--muted);letter-spacing:.5px;margin-top:2px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:'Oswald';font-size:14.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .18s;border-bottom:2px solid transparent;padding-bottom:2px}
+.nav-links a:hover{color:var(--text);border-bottom-color:var(--red)}
+.nav-btn{background:var(--red);color:#fff!important;padding:8px 20px;border-radius:4px;border:none!important}
+.nav-btn:hover{opacity:.85}
+
+/* HERO */
+.hero{background:var(--red);position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center}
+.hero-pattern{position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 0,transparent 50%);background-size:12px 12px}
+.hero-ring1{position:absolute;right:-8%;top:50%;transform:translateY(-50%);width:580px;height:580px;border-radius:50%;border:100px solid rgba(255,255,255,.05)}
+.hero-ring2{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:360px;height:360px;border-radius:50%;border:2px solid rgba(255,255,255,.1)}
+.hero-inner{position:relative;max-width:1200px;margin:0 auto;width:100%;padding:5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:1.75rem}
+.eyebrow-line{width:32px;height:1px;background:rgba(255,255,255,.4)}
+.eyebrow-text{font-family:'Oswald';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hero-title{font-family:'Oswald';font-size:clamp(3.2rem,6.5vw,6rem);font-weight:700;line-height:.9;letter-spacing:1px;text-transform:uppercase;color:#fff;margin-bottom:1rem}
+.hero-title em{font-style:italic;font-family:'Lora';letter-spacing:0;color:rgba(255,255,255,.9)}
+.hero-rule{width:56px;height:3px;background:rgba(255,255,255,.4);margin:1.25rem 0 1.5rem}
+.hero-body{color:rgba(255,255,255,.6);font-size:1rem;line-height:1.8;font-style:italic;max-width:420px;margin-bottom:2.5rem}
+.actions{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn-cream{background:var(--cream);color:var(--red);padding:13px 26px;border-radius:4px;font-family:'Oswald';font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:opacity .18s}
+.btn-cream:hover{opacity:.9}
+.btn-ghost{border:1px solid rgba(255,255,255,.3);color:#fff;padding:12px 24px;border-radius:4px;font-family:'Oswald';font-size:15px;font-weight:500;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .18s}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero-right{}
+.match-plate{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:1.5rem;margin-bottom:1.25rem;backdrop-filter:blur(12px)}
+.plate-label{font-family:'Oswald';font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.875rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.plate-teams{font-family:'Oswald';font-size:1.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;line-height:1.15;margin-bottom:.4rem}
+.plate-when{font-size:13.5px;color:rgba(255,255,255,.5);font-style:italic}
+.hero-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:.875rem}
+.hstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:1.1rem;text-align:center}
+.hstat-n{font-family:'Oswald';font-size:2.2rem;font-weight:700;color:#fff;line-height:1}
+.hstat-l{font-size:11px;color:rgba(255,255,255,.4);font-style:italic;margin-top:3px}
+
+/* CONTENT WRAP */
+.wrap{max-width:1200px;margin:0 auto;padding:4.5rem 3rem}
+.sec-head{margin-bottom:2rem}
+.sec-top-rule{display:flex;align-items:center;gap:0;margin-bottom:.5rem}
+.sec-rule-red{width:36px;height:3px;background:var(--red)}
+.sec-rule-dark{flex:1;height:2px;background:var(--text)}
+.sec-inner{display:flex;align-items:baseline;justify-content:space-between}
+.sec-title{font-family:'Oswald';font-size:2rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.sec-more{color:var(--red);text-decoration:none;font-family:'Oswald';font-size:12.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+
+/* FIXTURES */
+.fix-box{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:#fff}
+.fix-header{background:var(--red);color:#fff;display:grid;grid-template-columns:1fr auto 1fr;padding:.625rem 1.75rem;font-family:'Oswald';font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.fix-header .r{text-align:right}
+.fix-header .c{text-align:center}
+.fix{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:1.1rem 1.75rem;border-bottom:1px solid var(--border);transition:background .18s;cursor:pointer}
+.fix:last-child{border-bottom:none}
+.fix:hover{background:var(--red-light)}
+.fix-team{font-family:'Oswald';font-weight:600;font-size:15px;letter-spacing:.5px;text-transform:uppercase}
+.fix-team.r{text-align:right}
+.fix-mid{text-align:center}
+.fix-vs{font-family:'Lora';font-size:.85rem;font-style:italic;color:var(--muted)}
+.fix-date{font-family:'Oswald';font-size:11.5px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.fix-loc{display:inline-block;margin-top:5px;font-family:'Oswald';font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);border:1px solid var(--red);border-radius:2px;padding:2px 8px}
+.fix-loc.away{color:var(--muted);border-color:var(--light)}
+
+/* NEWS */
+.news-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem}
+.ncard{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:#fff;cursor:pointer;transition:border-color .18s,box-shadow .18s}
+.ncard:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(155,28,28,.08)}
+.ncard-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#6a0a0a,#9b1c1c)}
+.ncard-body{padding:1.25rem}
+.ncard-tag{font-family:'Oswald';font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.ncard-title{font-family:'Oswald';font-size:1.15rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;line-height:1.25;margin-bottom:6px}
+.ncard-body p{font-size:13px;color:var(--muted);line-height:1.6;font-style:italic}
+.ncard-date{font-family:'Oswald';font-size:11px;color:var(--light);letter-spacing:1px;margin-top:10px;text-transform:uppercase}
+
+/* ABOUT STRIP */
+.about{background:var(--parchment);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 3rem}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-eyebrow{font-family:'Oswald';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
+.about-title{font-family:'Oswald';font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);line-height:.95;margin-bottom:1.25rem}
+.about-rule{width:48px;height:3px;background:var(--red);margin-bottom:1.5rem}
+.about-body{color:var(--muted);font-size:15px;line-height:1.85;font-style:italic}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.astat{border:1px solid var(--border);border-radius:5px;padding:1.5rem;text-align:center;background:#fff}
+.astat-n{font-family:'Oswald';font-size:3rem;font-weight:700;color:var(--red);line-height:1}
+.astat-l{font-size:12px;color:var(--muted);font-style:italic;margin-top:4px;letter-spacing:.5px}
+
+/* SPONSORS */
+.sp{padding:4rem 3rem;background:var(--paper);border-bottom:1px solid var(--border)}
+.sp-inner{max-width:1200px;margin:0 auto}
+.sp-label{text-align:center;font-family:'Oswald';font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.sp-sub{text-align:center;font-style:italic;color:var(--muted);font-size:13px;margin-bottom:2rem}
+.sp-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
+.sp-item{border:1px solid var(--border);border-radius:4px;padding:11px 22px;font-family:'Oswald';font-size:13px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);background:var(--cream);cursor:pointer;transition:all .18s}
+.sp-item:hover{border-color:var(--red);color:var(--red)}
+
+/* CTA */
+.cta{background:var(--red);padding:6rem 3rem;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(0,0,0,.04) 0,rgba(0,0,0,.04) 1px,transparent 0,transparent 50%);background-size:10px 10px}
+.cta-eyebrow{font-family:'Oswald';font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:1rem;position:relative}
+.cta-title{font-family:'Oswald';font-size:clamp(3rem,7vw,5.5rem);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;line-height:.9;position:relative;margin-bottom:.5rem}
+.cta-title em{font-family:'Lora';font-style:italic;letter-spacing:0;font-weight:700}
+.cta-rule{width:56px;height:2px;background:rgba(255,255,255,.35);margin:1.25rem auto;position:relative}
+.cta-body{color:rgba(255,255,255,.65);font-size:1rem;font-style:italic;margin-bottom:2.25rem;position:relative}
+.btn-cream2{background:var(--cream);color:var(--red);padding:13px 32px;border-radius:4px;font-family:'Oswald';font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:opacity .18s;position:relative}
+.btn-cream2:hover{opacity:.9}
+
+/* FOOTER */
+footer{background:var(--text);padding:3rem}
+.foot{max-width:1200px;margin:0 auto}
+.foot-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem}
+.foot-brand{font-family:'Oswald';font-size:18px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.foot-brand em{color:var(--red);font-style:normal}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{color:rgba(255,255,255,.35);font-family:'Oswald';font-size:12px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:color .18s}
+.foot-links a:hover{color:#fff}
+.foot-copy{color:rgba(255,255,255,.2);font-size:12.5px;font-style:italic}
+</style>
+</head>
+<body>
+
+<div class="topbar">Steyning Town Community FC · Est. 1892 · Shooting Field, West Sussex</div>
+
+<nav>
+  <div class="logo">
+    <svg class="logo-shield" width="40" height="46" viewBox="0 0 40 46" fill="none">
+      <path d="M20 1L2 9V26C2 36 10.5 43.5 20 45.5C29.5 43.5 38 36 38 26V9L20 1Z" fill="#9B1C1C"/>
+      <path d="M20 7L7 13V26C7 33.5 12.5 39.5 20 41.5C27.5 39.5 33 33.5 33 26V13L20 7Z" fill="#7A1515"/>
+      <line x1="20" y1="7" x2="20" y2="41.5" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <line x1="7" y1="22" x2="33" y2="22" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <text x="20" y="19" font-family="Oswald" font-size="6" font-weight="700" text-anchor="middle" fill="white" letter-spacing="1">STCFC</text>
+      <text x="20" y="32" font-family="Oswald" font-size="5.5" font-weight="400" text-anchor="middle" fill="rgba(255,255,255,0.6)" letter-spacing="0.5">1892</text>
+    </svg>
+    <div class="brand">
+      <div class="brand-name">Steyning Town FC</div>
+      <div class="brand-sub">Community Football Club</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li><li><a href="#">Teams</a></li><li><a href="#">Fixtures</a></li><li><a href="#">News</a></li><li><a href="#">Shop</a></li>
+    <li><a href="#" class="nav-btn">Join Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-ring1"></div>
+  <div class="hero-ring2"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">2-Star England Football Accredited</span></div>
+      <h1 class="hero-title">The Pride Of<br><em>Steyning</em><br>Since 1892</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-body">"A club built on community, shaped by its people, and proud of its roots. From Mini-Kickers to Veterans — everyone belongs here."</p>
+      <div class="actions">
+        <a href="#" class="btn-cream">Register Now</a>
+        <a href="#" class="btn-ghost">View Fixtures</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="match-plate">
+        <div class="plate-label">Next Fixture · First Team · Home</div>
+        <div class="plate-teams">Steyning Town FC<br>vs Horsham FC</div>
+        <div class="plate-when">Saturday 21 June 2025 · 3:00pm</div>
+      </div>
+      <div class="hero-stats-grid">
+        <div class="hstat"><div class="hstat-n">500+</div><div class="hstat-l">Players</div></div>
+        <div class="hstat"><div class="hstat-n">20+</div><div class="hstat-l">Teams</div></div>
+        <div class="hstat"><div class="hstat-n">★★</div><div class="hstat-l">Accredited</div></div>
+        <div class="hstat"><div class="hstat-n">1892</div><div class="hstat-l">Founded</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="sec-head">
+    <div class="sec-top-rule"><div class="sec-rule-red"></div><div class="sec-rule-dark"></div></div>
+    <div class="sec-inner"><h2 class="sec-title">Upcoming Fixtures</h2><a href="#" class="sec-more">Full Fixture List →</a></div>
+  </div>
+  <div class="fix-box">
+    <div class="fix-header"><div>Home</div><div class="c">Date & Kick-off</div><div class="r">Away</div></div>
+    <div class="fix"><div class="fix-team">Steyning Town FC</div><div class="fix-mid"><div class="fix-vs">versus</div><div class="fix-date">Sat 21 Jun · 15:00</div><div><span class="fix-loc">Home</span></div></div><div class="fix-team r">Horsham FC</div></div>
+    <div class="fix"><div class="fix-team">Worthing FC</div><div class="fix-mid"><div class="fix-vs">versus</div><div class="fix-date">Sat 28 Jun · 14:00</div><div><span class="fix-loc away">Away</span></div></div><div class="fix-team r">Steyning Town FC</div></div>
+    <div class="fix"><div class="fix-team">Steyning Town FC</div><div class="fix-mid"><div class="fix-vs">versus</div><div class="fix-date">Sat 5 Jul · 15:00</div><div><span class="fix-loc">Home</span></div></div><div class="fix-team r">Lancing FC</div></div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:0">
+  <div class="sec-head">
+    <div class="sec-top-rule"><div class="sec-rule-red"></div><div class="sec-rule-dark"></div></div>
+    <div class="sec-inner"><h2 class="sec-title">Latest News</h2><a href="#" class="sec-more">All News →</a></div>
+  </div>
+  <div class="news-grid">
+    <div class="ncard"><div class="ncard-img"></div><div class="ncard-body"><div class="ncard-tag">Club News</div><div class="ncard-title">Season 2025–26 Kicks Off With Record Registrations</div><p>A record number of players registered ahead of the new season.</p><div class="ncard-date">June 10, 2025</div></div></div>
+    <div class="ncard"><div class="ncard-img"></div><div class="ncard-body"><div class="ncard-tag">Match Report</div><div class="ncard-title">First Team Victory Keeps Title Race Alive</div><p>An impressive performance earns three crucial points.</p><div class="ncard-date">June 7, 2025</div></div></div>
+    <div class="ncard"><div class="ncard-img"></div><div class="ncard-body"><div class="ncard-tag">Community</div><div class="ncard-title">Mini-Kickers Programme Expands for Summer</div><p>New sessions added to meet growing local demand.</p><div class="ncard-date">June 3, 2025</div></div></div>
+  </div>
+</div>
+
+<div class="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-eyebrow">Our Story</div>
+      <h2 class="about-title">More Than A Football Club</h2>
+      <div class="about-rule"></div>
+      <p class="about-body">Steyning Town Community FC has been the heartbeat of this town for over a century. We're more than a football club — a place where friendships are forged, young players find their feet, and the community gathers every weekend.</p>
+    </div>
+    <div class="about-stats">
+      <div class="astat"><div class="astat-n">500+</div><div class="astat-l">Registered Players</div></div>
+      <div class="astat"><div class="astat-n">20+</div><div class="astat-l">Active Teams</div></div>
+      <div class="astat"><div class="astat-n">★★</div><div class="astat-l">England Football</div></div>
+      <div class="astat"><div class="astat-n">133</div><div class="astat-l">Years of Football</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sp">
+  <div class="sp-inner">
+    <div class="sp-label">Our Partners</div>
+    <p class="sp-sub">Proud to be supported by these local businesses</p>
+    <div class="sp-grid">
+      <div class="sp-item">Tates Motor Group</div><div class="sp-item">CALA Homes</div><div class="sp-item">Steyning Sports</div><div class="sp-item">Sussex Health</div><div class="sp-item">West Sussex Media</div><div class="sp-item">Local Partner</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <div class="cta-eyebrow">Steyning Town Community FC</div>
+  <h2 class="cta-title">Join The <em>Club</em></h2>
+  <div class="cta-rule"></div>
+  <p class="cta-body">All ages. All abilities. Just a love of the game.</p>
+  <a href="#" class="btn-cream2">Register Today</a>
+</div>
+
+<footer>
+  <div class="foot">
+    <div class="foot-top">
+      <div class="foot-brand">Steyning Town <em>FC</em></div>
+      <div class="foot-links"><a href="#">Privacy</a><a href="#">Contact</a><a href="#">Instagram</a><a href="#">Facebook</a></div>
+    </div>
+    <p class="foot-copy">© 2025 Steyning Town Community Football Club. All rights reserved. Shooting Field, West Sussex.</p>
+  </div>
+</footer>
+</body>
+</html>

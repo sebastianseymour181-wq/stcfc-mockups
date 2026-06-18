@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steyning Town Community FC — The Barrowmen</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C21020;--red2:#E01428;--red-dark:#8A0C18;
+  --white:#FFFFFF;--off:#FFF5F5;--off2:#F7F7F7;
+  --text:#0D0203;--muted:#6B6B6B;--border:#E5E5E5;
+  --dark:#130103;--s:44px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'Nunito Sans',sans-serif;overflow-x:hidden}
+
+/* ─── PROMO ─── */
+.promo{background:var(--red);color:rgba(255,255,255,.85);text-align:center;padding:8px 1rem;font-family:'Montserrat';font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.promo-chip{background:rgba(255,255,255,.18);border-radius:3px;padding:2px 10px;font-size:10px;flex-shrink:0}
+
+/* ─── NAV ─── */
+nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.ni{max-width:1280px;margin:0 auto;padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{display:flex;align-items:center;gap:13px;text-decoration:none;flex-shrink:0}
+.logo-badge{width:46px;height:46px;background:var(--red);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.logo-badge::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 8px,rgba(255,255,255,.25) 8px,rgba(255,255,255,.25) 16px)}
+.logo-badge span{font-family:'Montserrat';font-size:8px;font-weight:900;color:#fff;letter-spacing:.5px;text-align:center;line-height:1.2;position:relative}
+.brand-n{font-family:'Montserrat';font-size:16px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text);line-height:1}
+.brand-n em{color:var(--red);font-style:normal}
+.brand-s{font-size:10px;color:var(--muted);margin-top:2px;font-weight:600;letter-spacing:.3px}
+.nl{display:flex;list-style:none;align-items:center}
+.nl a{display:block;font-family:'Montserrat';font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0 .75rem;height:68px;line-height:68px;border-bottom:4px solid transparent;margin-bottom:-4px;transition:color .15s,border-color .15s;white-space:nowrap}
+.nl a:hover{color:var(--text);border-color:var(--red)}
+.nl a.on{color:var(--red);border-color:var(--red)}
+.nc-btn{background:var(--red)!important;color:#fff!important;border-radius:5px!important;margin-left:.375rem;padding:0 1rem!important;height:36px!important;line-height:36px!important;border-bottom:none!important;transition:opacity .15s!important}
+.nc-btn:hover{opacity:.85;border-color:transparent!important}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;flex-shrink:0}
+.ham span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .25s}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;top:72px;left:0;right:0;background:#fff;border-bottom:4px solid var(--red);z-index:199;box-shadow:0 8px 30px rgba(0,0,0,.1);padding:1rem 1.5rem 1.5rem}
+.mob-menu.open{display:block}
+.mob-menu a{display:block;font-family:'Montserrat';font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);text-decoration:none;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu a.mc-btn{margin-top:.875rem;background:var(--red);color:#fff;text-align:center;padding:.875rem;border-radius:6px;border-bottom:none}
+
+/* ─── HERO ─── */
+.hero{min-height:92vh;position:relative;overflow:hidden;display:flex;align-items:center;background:var(--dark)}
+.hero-stripes{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--red) 0,var(--red) var(--s),#fff var(--s),#fff calc(var(--s)*2))}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(13,2,3,.96) 0%,rgba(13,2,3,.9) 38%,rgba(13,2,3,.25) 65%,transparent 100%)}
+.hero-slash{position:absolute;top:0;right:30%;bottom:0;width:5px;background:#fff;transform:skewX(-8deg);opacity:.12}
+.hero-slash2{position:absolute;top:0;right:28%;bottom:0;width:2px;background:#fff;transform:skewX(-8deg);opacity:.06}
+.hero-inner{position:relative;max-width:1280px;margin:0 auto;width:100%;padding:5rem 2rem;display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center}
+.hl-pill{display:inline-flex;margin-bottom:1.5rem}
+.hl-pill-inner{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:5px 14px;color:rgba(255,255,255,.7);font-family:'Montserrat';font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.pdot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:blink 2.5s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hl-title{font-family:'Montserrat';font-size:clamp(3.5rem,7.5vw,6.75rem);font-weight:900;font-style:italic;line-height:.88;text-transform:uppercase;color:#fff;margin-bottom:.75rem;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.hl-title .red{color:var(--red2)}
+.hl-title .out{-webkit-text-stroke:2px rgba(255,255,255,.28);color:transparent}
+.hl-rule{width:56px;height:4px;background:var(--red2);margin:.875rem 0 1.5rem}
+.hl-desc{color:rgba(255,255,255,.58);font-size:1rem;line-height:1.8;max-width:460px;margin-bottom:2.25rem}
+.hl-desc strong{color:#fff;font-weight:700}
+.acts{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn-w{background:#fff;color:var(--red);padding:13px 26px;border-radius:6px;font-family:'Montserrat';font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:opacity .15s;white-space:nowrap}
+.btn-w:hover{opacity:.9}
+.btn-o{border:2px solid rgba(255,255,255,.28);color:#fff;padding:11px 24px;border-radius:6px;font-family:'Montserrat';font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .15s;white-space:nowrap}
+.btn-o:hover{border-color:rgba(255,255,255,.7)}
+.hr{display:flex;flex-direction:column;gap:.875rem}
+.hcard{background:rgba(255,255,255,.97);border-radius:10px;padding:1.4rem;box-shadow:0 20px 60px rgba(0,0,0,.45);border-top:4px solid var(--red)}
+.hcard-comp{font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem;padding-bottom:.625rem;border-bottom:1px solid var(--border)}
+.hcard-match{font-family:'Montserrat';font-size:1.35rem;font-weight:900;text-transform:uppercase;color:var(--text);line-height:1.15;margin-bottom:.4rem}
+.hcard-info{font-size:13px;color:var(--muted);font-style:italic}
+.hcard-venue{font-family:'Montserrat';font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(0,0,0,.25);margin-top:.35rem}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.25rem}
+.hs{background:var(--off);border-radius:6px;padding:.75rem .4rem;text-align:center}
+.hs-n{font-family:'Montserrat';font-size:1.4rem;font-weight:900;color:var(--red);line-height:1}
+.hs-l{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:3px}
+.htrophy{background:var(--red);border-radius:8px;padding:.875rem 1.1rem;display:flex;align-items:center;gap:.875rem}
+.htrophy-i{font-size:1.4rem;line-height:1;flex-shrink:0}
+.htrophy-t{font-family:'Montserrat';font-size:.825rem;font-weight:800;text-transform:uppercase;color:#fff;line-height:1}
+.htrophy-s{font-size:11px;color:rgba(255,255,255,.58);margin-top:2px;font-style:italic}
+
+/* ─── STRIPE DIVIDER ─── */
+.sdiv{height:10px;background-image:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 50%,#fff 50%,#fff 100%)}
+
+/* ─── STATS BAND ─── */
+.statb{background:var(--red)}
+.statb-i{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.sb2{padding:1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,.15);position:relative;overflow:hidden}
+.sb2::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 18px,transparent 18px,transparent 36px)}
+.sb2:last-child{border-right:none}
+.sb2-n{font-family:'Montserrat';font-size:2.75rem;font-weight:900;color:#fff;line-height:1;position:relative}
+.sb2-l{font-family:'Montserrat';font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.5);margin-top:4px;position:relative}
+
+/* ─── WRAP & SECTION HEADER ─── */
+.wrap{max-width:1280px;margin:0 auto;padding:4.5rem 2rem}
+.sh{margin-bottom:2rem}
+.sh-top{display:flex;align-items:center;margin-bottom:.4rem}
+.sh-r{width:40px;height:4px;background:var(--red);flex-shrink:0}
+.sh-d{flex:1;height:2px;background:#E5E5E5}
+.sh-bot{display:flex;align-items:baseline;justify-content:space-between;margin-top:.35rem;flex-wrap:wrap;gap:.5rem}
+.sh-t{font-family:'Montserrat';font-size:1.7rem;font-weight:900;letter-spacing:.5px;text-transform:uppercase}
+.sh-m{color:var(--red);text-decoration:none;font-family:'Montserrat';font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.sh-sub{color:var(--muted);font-size:14px;font-style:italic;margin-top:.25rem}
+
+/* ─── NEWS ─── */
+.news-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:1.25rem}
+.nfeat{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s;text-decoration:none;color:inherit;display:block}
+.nfeat:hover{border-color:var(--red);box-shadow:0 8px 32px rgba(194,16,32,.1);transform:translateY(-2px)}
+.nfeat-img{width:100%;aspect-ratio:16/8;background:linear-gradient(135deg,var(--red-dark),var(--red));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.nfeat-img::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.1) 28px,transparent 28px,transparent 56px)}
+.nfeat-img::after{content:'FEATURED';position:absolute;top:1rem;left:1rem;background:rgba(0,0,0,.45);color:#fff;font-family:'Montserrat';font-size:8.5px;font-weight:800;letter-spacing:2px;padding:4px 9px;border-radius:3px}
+.ni-logo{font-family:'Montserrat';font-size:2.5rem;font-weight:900;font-style:italic;color:rgba(255,255,255,.2);text-transform:uppercase;position:relative}
+.nfeat-body{padding:1.4rem}
+.ntag{font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.ntitle{font-family:'Montserrat';font-size:1.2rem;font-weight:900;text-transform:uppercase;line-height:1.2;margin-bottom:8px}
+.nbody{color:var(--muted);font-size:13.5px;line-height:1.65}
+.ndate{font-family:'Montserrat';font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#ccc;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.nside{display:flex;flex-direction:column;gap:.875rem}
+.nsm{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:all .15s;text-decoration:none;color:inherit;display:block}
+.nsm:hover{border-color:var(--red);transform:translateX(3px)}
+.nsm-img{width:100%;aspect-ratio:16/7;background:linear-gradient(135deg,var(--red-dark),var(--red));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.nsm-img::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0,rgba(255,255,255,.09) 20px,transparent 20px,transparent 40px)}
+.nsm-il{font-family:'Montserrat';font-size:1.5rem;font-weight:900;font-style:italic;color:rgba(255,255,255,.2);position:relative}
+.nsm-body{padding:.875rem 1.1rem}
+.nsm-title{font-family:'Montserrat';font-size:.875rem;font-weight:800;text-transform:uppercase;line-height:1.2;margin-bottom:4px}
+.nsm-date{font-family:'Montserrat';font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#ccc}
+
+/* ─── FIXTURES & RESULTS ─── */
+.fx-results-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.fbox{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}
+.fhd{background:var(--red);color:rgba(255,255,255,.6);display:grid;grid-template-columns:1fr auto 1fr;padding:.6rem 1.5rem;font-family:'Montserrat';font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.fhd .r{text-align:right}.fhd .c{text-align:center}
+.fr{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:.875rem 1.25rem;border-bottom:1px solid var(--border);transition:background .15s;cursor:pointer}
+.fr:last-child{border-bottom:none}
+.fr:hover{background:var(--off)}
+.fteam{font-family:'Montserrat';font-weight:800;font-size:12.5px;letter-spacing:.2px;text-transform:uppercase;line-height:1.2}
+.fteam.r{text-align:right}
+.fteam.stcfc{color:var(--red)}
+.fmid{text-align:center}
+.fvs{font-size:.75rem;font-style:italic;color:var(--muted);margin-bottom:2px}
+.fdate{font-family:'Montserrat';font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:.3px;text-transform:uppercase}
+.floc{display:inline-block;margin-top:4px;font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border-radius:3px;padding:2px 6px;border:1px solid}
+.floc.h{color:var(--red);border-color:var(--red)}
+.floc.a{color:var(--muted);border-color:var(--border)}
+.fcomp{font-family:'Montserrat';font-size:8px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;color:rgba(0,0,0,.2);margin-top:2px}
+/* Result score display */
+.fscore{font-family:'Montserrat';font-size:1.4rem;font-weight:900;color:var(--text);letter-spacing:2px;line-height:1}
+.fres{font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:1.5px;border-radius:3px;padding:2px 7px;margin-top:3px;display:inline-block}
+.fres.w{background:#d1fae5;color:#065f46}
+.fres.d{background:#fef3c7;color:#92400e}
+.fres.l{background:#fee2e2;color:#991b1b}
+/* Admission note */
+.adm-note{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:.875rem 1.25rem;margin-top:.875rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.adm-item{font-family:'Montserrat';font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text)}
+.adm-item span{color:var(--red);font-size:13px}
+.adm-sep{width:1px;height:20px;background:var(--border)}
+
+/* ─── HISTORY TIMELINE ─── */
+.history{background:var(--dark);padding:5rem 2rem;position:relative;overflow:hidden}
+.history::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.05) 0,rgba(194,16,32,.05) 42px,transparent 42px,transparent 84px)}
+.history::after{content:'';position:absolute;top:0;left:0;right:0;height:50px;background:var(--white);clip-path:polygon(0 0,100% 0,100% 0,0 100%)}
+.history-inner{position:relative;max-width:1280px;margin:0 auto}
+.h-sup{font-family:'Montserrat';font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.875rem}
+.h-head{font-family:'Montserrat';font-size:clamp(2rem,5vw,3.5rem);font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;line-height:.9;margin-bottom:3rem}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.tl{border-left:3px solid var(--red);padding:.75rem 1rem;background:rgba(255,255,255,.04);border-radius:0 6px 6px 0}
+.tl-year{font-family:'Montserrat';font-size:1.3rem;font-weight:900;color:var(--red);line-height:1;margin-bottom:.35rem}
+.tl-t{font-family:'Montserrat';font-size:.825rem;font-weight:800;text-transform:uppercase;color:#fff;margin-bottom:.25rem;letter-spacing:.2px}
+.tl-b{font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.55;font-style:italic}
+
+/* ─── ACHIEVEMENTS ─── */
+.ach{background:var(--red);position:relative;overflow:hidden;padding:5rem 2rem}
+.ach::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0,rgba(255,255,255,.06) 42px,transparent 42px,transparent 84px)}
+.ach::after{content:'';position:absolute;top:0;left:0;right:0;height:50px;background:var(--dark);clip-path:polygon(0 0,100% 0,100% 0,0 100%)}
+.ach-inner{position:relative;max-width:1280px;margin:0 auto}
+.ach-sup{font-family:'Montserrat';font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.875rem}
+.ach-h{font-family:'Montserrat';font-size:clamp(2.25rem,5vw,3.75rem);font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;line-height:.9;margin-bottom:2.25rem}
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.875rem}
+.ac{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:1.4rem;transition:background .15s}
+.ac:hover{background:rgba(255,255,255,.14)}
+.ac-i{font-size:1.6rem;margin-bottom:.625rem}
+.ac-t{font-family:'Montserrat';font-size:.875rem;font-weight:800;text-transform:uppercase;color:#fff;margin-bottom:.35rem;letter-spacing:.2px}
+.ac-b{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;font-style:italic}
+
+/* ─── MANAGEMENT & SQUAD ─── */
+.squad{background:var(--off2);padding:5rem 2rem;border-top:1px solid var(--border)}
+.squad-inner{max-width:1280px;margin:0 auto}
+.mgmt-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.mgmt-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1.25rem;border-left:4px solid var(--red)}
+.mgmt-role{font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.mgmt-name{font-family:'Montserrat';font-size:1.1rem;font-weight:900;text-transform:uppercase;color:var(--text);line-height:1}
+.mgmt-desc{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:4px}
+.mgmt-i{font-size:2rem;flex-shrink:0}
+.squad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:.5rem}
+.pc{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .18s;text-align:center}
+.pc:hover{border-color:var(--red);box-shadow:0 6px 28px rgba(194,16,32,.1);transform:translateY(-3px)}
+.pc-stripe{height:8px;background-image:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 50%,#fff 50%,#fff 100%);border-bottom:1px solid var(--border)}
+.pc-img{width:100%;aspect-ratio:3/3.5;background:linear-gradient(160deg,var(--off) 0%,#E8E8E8 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pc-img::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.06) 0,rgba(194,16,32,.06) 22px,transparent 22px,transparent 44px)}
+.pc-num{font-family:'Montserrat';font-size:5rem;font-weight:900;font-style:italic;color:rgba(194,16,32,.12);position:relative;line-height:1;user-select:none}
+.pc-body{padding:.875rem 1rem 1.1rem}
+.pc-name{font-family:'Montserrat';font-size:.9rem;font-weight:900;text-transform:uppercase;letter-spacing:.2px;color:var(--text);line-height:1.1;margin-bottom:.35rem}
+.pc-pos{display:inline-block;background:var(--off);border:1px solid var(--border);border-radius:3px;font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:2px 7px}
+
+/* ─── TEAMS ─── */
+.teams{background:var(--white);border-top:1px solid var(--border);padding:4.5rem 2rem}
+.teams-inner{max-width:1280px;margin:0 auto}
+.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:2rem}
+.tc{border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem;background:#fff;transition:all .18s;cursor:pointer;border-left:3px solid var(--red)}
+.tc:hover{border-color:var(--red);box-shadow:0 3px 14px rgba(194,16,32,.08)}
+.tc-n{font-family:'Montserrat';font-size:.875rem;font-weight:800;text-transform:uppercase;letter-spacing:.2px;margin-bottom:3px;color:var(--text)}
+.tc-l{font-size:11.5px;color:var(--muted);font-style:italic}
+
+/* ─── GROUND & CLUBHOUSE ─── */
+.ground{background:var(--dark);padding:5rem 2rem;position:relative;overflow:hidden}
+.ground::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.05) 0,rgba(194,16,32,.05) 42px,transparent 42px,transparent 84px)}
+.ground::after{content:'';position:absolute;top:0;left:0;right:0;height:50px;background:var(--white);clip-path:polygon(0 0,100% 0,100% 0,0 100%)}
+.ground-inner{position:relative;max-width:1280px;margin:0 auto}
+.ground-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.g-sup{font-family:'Montserrat';font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
+.g-h{font-family:'Montserrat';font-size:clamp(2rem,4vw,3rem);font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;line-height:.9;margin-bottom:1rem}
+.g-rule{width:48px;height:3px;background:var(--red);margin-bottom:1.5rem}
+.g-body{color:rgba(255,255,255,.4);font-size:15px;line-height:1.8;font-style:italic}
+.g-addr{margin-top:1.25rem;font-family:'Montserrat';font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.18)}
+.gfs{display:flex;flex-direction:column;gap:.75rem}
+.gf{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:.875rem 1.1rem;display:flex;align-items:center;gap:.875rem}
+.gf-i{font-size:1.2rem;flex-shrink:0}
+.gf-t{font-family:'Montserrat';font-size:.825rem;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.2px;line-height:1}
+.gf-s{font-size:12px;color:rgba(255,255,255,.3);margin-top:2px;font-style:italic}
+/* Clubhouse sub-section within ground */
+.clubhouse-hl{font-family:'Montserrat';font-size:1.1rem;font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;margin:2rem 0 1rem}
+.ch-items{display:grid;grid-template-columns:1fr 1fr;gap:.625rem}
+.ch-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:.75rem .875rem;font-size:12.5px;color:rgba(255,255,255,.4);font-style:italic}
+.ch-item strong{color:rgba(255,255,255,.75);display:block;font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;font-style:normal}
+
+/* ─── SHOP ─── */
+.shop{padding:5rem 2rem;background:var(--off2);border-top:1px solid var(--border)}
+.shop-inner{max-width:1280px;margin:0 auto}
+.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.prod{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s}
+.prod:hover{border-color:var(--red);box-shadow:0 8px 32px rgba(194,16,32,.1);transform:translateY(-3px)}
+.prod-img{width:100%;aspect-ratio:1/1.1;background:linear-gradient(160deg,var(--off) 0%,#EBEBEB 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.prod-img::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.07) 0,rgba(194,16,32,.07) 22px,transparent 22px,transparent 44px)}
+.prod-ico{font-size:3.5rem;position:relative}
+.prod-badge{position:absolute;top:.75rem;left:.75rem;background:var(--red);color:#fff;font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.prod-body{padding:1rem 1.1rem}
+.prod-cat{font-family:'Montserrat';font-size:8.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.prod-name{font-family:'Montserrat';font-size:.925rem;font-weight:800;text-transform:uppercase;letter-spacing:.2px;color:var(--text);margin-bottom:.35rem}
+.prod-desc{font-size:12.5px;color:var(--muted);margin-bottom:.875rem;line-height:1.5}
+.prod-footer{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-family:'Montserrat';font-size:1.2rem;font-weight:900;color:var(--text)}
+.prod-btn{background:var(--red);color:#fff;font-family:'Montserrat';font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:7px 14px;border-radius:5px;border:none;cursor:pointer;transition:opacity .15s}
+.prod-btn:hover{opacity:.85}
+
+/* ─── SPONSORS ─── */
+.sp{padding:4rem 2rem;background:#fff;border-top:1px solid var(--border)}
+.sp-inner{max-width:1280px;margin:0 auto}
+.sp-l{text-align:center;font-family:'Montserrat';font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.sp-s{text-align:center;font-style:italic;color:var(--muted);font-size:13px;margin-bottom:2.25rem}
+.sp-tier{margin-bottom:2rem}
+.sp-tl{font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem}
+.sp-grid{display:flex;flex-wrap:wrap;gap:.5rem}
+.sp-item{border:1px solid var(--border);border-radius:5px;padding:8px 16px;font-family:'Montserrat';font-size:11px;font-weight:700;letter-spacing:.2px;text-transform:uppercase;color:var(--muted);background:#fff;cursor:pointer;transition:all .15s}
+.sp-item:hover{border-color:var(--red);color:var(--red)}
+.sp-item.elite{border-color:#D4AF37;color:#8A6800;background:#FFFDF4}
+.sp-item.elite:hover{background:#FFF8E0}
+.sp-item.kit{border-color:#C21020;color:var(--red);background:var(--off)}
+
+/* ─── CTA ─── */
+.cta{position:relative;overflow:hidden;padding:6rem 2rem;text-align:center}
+.cta-stripes{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--red) 0,var(--red) var(--s),#fff var(--s),#fff calc(var(--s)*2))}
+.cta-overlay{position:absolute;inset:0;background:rgba(174,10,24,.9)}
+.cta-inner{position:relative}
+.cta-sup{font-family:'Montserrat';font-size:9.5px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:1rem}
+.cta-h{font-family:'Montserrat';font-size:clamp(3rem,8vw,7rem);font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;line-height:.85;margin-bottom:.5rem}
+.cta-h .out{-webkit-text-stroke:2px rgba(255,255,255,.28);color:transparent}
+.cta-rule{width:56px;height:3px;background:rgba(255,255,255,.28);margin:1.25rem auto}
+.cta-b{color:rgba(255,255,255,.5);font-size:1rem;font-style:italic;margin-bottom:1rem}
+.cta-email{font-family:'Montserrat';font-size:12px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:2.25rem}
+.cta-email a{color:rgba(255,255,255,.7);text-decoration:none}
+.cta-email a:hover{color:#fff}
+.btn-cta{background:#fff;color:var(--red);padding:14px 34px;border-radius:6px;font-family:'Montserrat';font-weight:900;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:opacity .15s;display:inline-block}
+.btn-cta:hover{opacity:.92}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dark)}
+.fstrip{height:8px;background-image:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 50%,#fff 50%,#fff 100%)}
+.fi{max-width:1280px;margin:0 auto;padding:3rem 2rem}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.25rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:2rem}
+.fb-name{font-family:'Montserrat';font-size:17px;font-weight:900;text-transform:uppercase;color:#fff}
+.fb-name em{color:var(--red);font-style:normal}
+.fb-desc{color:rgba(255,255,255,.28);font-size:13px;line-height:1.7;font-style:italic;max-width:250px;margin-top:.75rem}
+.fsoc{display:flex;gap:.45rem;margin-top:1.1rem;flex-wrap:wrap}
+.fsoc a{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:5px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);text-decoration:none;font-size:.875rem;transition:all .15s}
+.fsoc a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.fcol-t{font-family:'Montserrat';font-size:9.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:.875rem}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.fcol a{color:rgba(255,255,255,.32);font-size:13px;text-decoration:none;font-style:italic;transition:color .15s}
+.fcol a:hover{color:rgba(255,255,255,.75)}
+.fbot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.fcopy{color:rgba(255,255,255,.16);font-size:11.5px;font-style:italic}
+.faccred{font-family:'Montserrat';font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.16)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .nl a{padding:0 .6rem;font-size:10.5px}
+  .squad-grid{grid-template-columns:repeat(3,1fr)}
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .ftop{grid-template-columns:1fr 1fr;gap:2rem}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nl{display:none}
+  .ham{display:flex}
+  .hero-inner{grid-template-columns:1fr;padding:3.5rem 1.5rem}
+  .hr{display:none}
+  .hl-title{font-size:clamp(3rem,12vw,5rem)}
+  .statb-i{grid-template-columns:repeat(2,1fr)}
+  .news-layout{grid-template-columns:1fr}
+  .fx-results-grid{grid-template-columns:1fr}
+  .ground-grid{grid-template-columns:1fr}
+  .squad-grid{grid-template-columns:repeat(2,1fr)}
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .ach-grid{grid-template-columns:1fr 1fr}
+  .tg{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:1fr}
+  .mgmt-row{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr;gap:1.5rem}
+  .ch-items{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .squad-grid{grid-template-columns:repeat(2,1fr)}
+  .shop-grid{grid-template-columns:1fr}
+  .tg{grid-template-columns:1fr}
+  .ach-grid{grid-template-columns:1fr}
+  .hstats{grid-template-columns:repeat(2,1fr)}
+  .statb-i{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="promo">
+  <span class="promo-chip">🏆 Champions</span>
+  SCFL Premier Champions 2025–26 · Now in the Pitching-In Isthmian League South East Division
+</div>
+
+<nav id="nav">
+  <div class="ni">
+    <a href="#home" class="logo">
+      <div class="logo-badge"><span>ST<br>FC</span></div>
+      <div>
+        <div class="brand-n">Steyning Town <em>FC</em></div>
+        <div class="brand-s">The Barrowmen · Est. 1892</div>
+      </div>
+    </a>
+    <ul class="nl">
+      <li><a href="#home" class="on">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#fixtures">Fixtures</a></li>
+      <li><a href="#squad">Squad</a></li>
+      <li><a href="#teams">Teams</a></li>
+      <li><a href="#ground">Ground</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#join" class="nc-btn">Join Us</a></li>
+    </ul>
+    <button class="ham" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mob-menu">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#fixtures">Fixtures &amp; Results</a>
+  <a href="#squad">Squad</a>
+  <a href="#teams">Teams</a>
+  <a href="#ground">Ground &amp; Clubhouse</a>
+  <a href="#shop">Shop</a>
+  <a href="#join" class="mc-btn">Join Us</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-stripes"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-slash"></div>
+  <div class="hero-slash2"></div>
+  <div class="hero-inner">
+    <div class="hl">
+      <div class="hl-pill">
+        <div class="hl-pill-inner"><div class="pdot"></div>Pitching-In Isthmian League · 2026–27</div>
+      </div>
+      <h1 class="hl-title"><span class="red">The</span><br>Borrow<span class="out">men</span></h1>
+      <div class="hl-rule"></div>
+      <p class="hl-desc">Steyning Town Community FC — one of <strong>Sussex's oldest clubs</strong>, founded in 1892. Red and white stripes. <strong>SCFL Premier Champions 2025–26</strong>. Back in the Isthmian League with over 500 players across 30 teams.</p>
+      <div class="acts">
+        <a href="#join" class="btn-w">Register Now</a>
+        <a href="#fixtures" class="btn-o">View Fixtures</a>
+      </div>
+    </div>
+    <div class="hr">
+      <div class="hcard">
+        <div class="hcard-comp">Pitching-In Isthmian League South East Division</div>
+        <div class="hcard-match">Steyning Town FC<br>vs Horsham FC</div>
+        <div class="hcard-info">Saturday 21 June 2026 · 3:00 PM</div>
+        <div class="hcard-venue">Shooting Field · Steyning · BN44 3RQ · Admission £10 / £6 concs</div>
+      </div>
+      <div class="htrophy">
+        <div class="htrophy-i">🏆</div>
+        <div>
+          <div class="htrophy-t">SCFL Premier Champions 2025–26</div>
+          <div class="htrophy-s">Champions 2023–24 · Peter Bentley Cup 2023–24</div>
+        </div>
+      </div>
+      <div class="hstats">
+        <div class="hs"><div class="hs-n">500+</div><div class="hs-l">Players</div></div>
+        <div class="hs"><div class="hs-n">30+</div><div class="hs-l">Teams</div></div>
+        <div class="hs"><div class="hs-n">★★</div><div class="hs-l">Accredited</div></div>
+        <div class="hs"><div class="hs-n">1892</div><div class="hs-l">Founded</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+<div class="statb">
+  <div class="statb-i">
+    <div class="sb2"><div class="sb2-n">134</div><div class="sb2-l">Years of History</div></div>
+    <div class="sb2"><div class="sb2-n">500+</div><div class="sb2-l">Registered Players</div></div>
+    <div class="sb2"><div class="sb2-n">30+</div><div class="sb2-l">Active Teams</div></div>
+    <div class="sb2"><div class="sb2-n">★★</div><div class="sb2-l">England Football</div></div>
+  </div>
+</div>
+
+<!-- ═══ NEWS ═══ -->
+<div class="wrap" id="news">
+  <div class="sh">
+    <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+    <div class="sh-bot"><h2 class="sh-t">Latest News</h2><a href="#" class="sh-m">All News →</a></div>
+  </div>
+  <div class="news-layout">
+    <a href="#" class="nfeat">
+      <div class="nfeat-img"><span class="ni-logo">STCFC</span></div>
+      <div class="nfeat-body">
+        <div class="ntag">Management</div>
+        <h3 class="ntitle">Brannon O'Neill Appointed Men's First Team Manager</h3>
+        <p class="nbody">Brannon O'Neill has been named Men's First Team Manager ahead of the club's return to the Pitching-In Isthmian League. O'Neill brings over 740 appearances in non-league football to the role.</p>
+        <div class="ndate">19 May 2026</div>
+      </div>
+    </a>
+    <div class="nside">
+      <a href="#" class="nsm">
+        <div class="nsm-img"><span class="nsm-il">STCFC</span></div>
+        <div class="nsm-body">
+          <div class="ntag">Management</div>
+          <div class="nsm-title">Kaz Bridgewater Returns as Women's First Team Manager</div>
+          <div class="nsm-date">11 Jun 2026</div>
+        </div>
+      </a>
+      <a href="#" class="nsm">
+        <div class="nsm-img"><span class="nsm-il">STCFC</span></div>
+        <div class="nsm-body">
+          <div class="ntag">Club News</div>
+          <div class="nsm-title">Isthmian U18s — Club Accepted Into League for First Time</div>
+          <div class="nsm-date">17 May 2026</div>
+        </div>
+      </a>
+      <a href="#" class="nsm">
+        <div class="nsm-img"><span class="nsm-il">STCFC</span></div>
+        <div class="nsm-body">
+          <div class="ntag">Community</div>
+          <div class="nsm-title">Women's Open Sessions Start 17 June — All Welcome</div>
+          <div class="nsm-date">15 Jun 2026</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FIXTURES & RESULTS ═══ -->
+<div class="wrap" id="fixtures" style="padding-top:0">
+  <div class="fx-results-grid">
+    <div>
+      <div class="sh" style="margin-bottom:1rem">
+        <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+        <div class="sh-bot"><h2 class="sh-t">Upcoming Fixtures</h2><a href="#" class="sh-m">Full Schedule →</a></div>
+      </div>
+      <div class="fbox">
+        <div class="fhd"><div>Home</div><div class="c">Date · KO</div><div class="r">Away</div></div>
+        <div class="fr">
+          <div class="fteam stcfc">Steyning Town</div>
+          <div class="fmid"><div class="fvs">vs</div><div class="fdate">21 Jun · 15:00</div><div><span class="floc h">Home</span></div><div class="fcomp">Isthmian SE</div></div>
+          <div class="fteam r">Horsham FC</div>
+        </div>
+        <div class="fr">
+          <div class="fteam">East Grinstead</div>
+          <div class="fmid"><div class="fvs">vs</div><div class="fdate">28 Jun · 14:00</div><div><span class="floc a">Away</span></div><div class="fcomp">Isthmian SE</div></div>
+          <div class="fteam r stcfc">Steyning Town</div>
+        </div>
+        <div class="fr">
+          <div class="fteam stcfc">Steyning Town</div>
+          <div class="fmid"><div class="fvs">vs</div><div class="fdate">5 Jul · 15:00</div><div><span class="floc h">Home</span></div><div class="fcomp">Isthmian SE</div></div>
+          <div class="fteam r">Lancing FC</div>
+        </div>
+        <div class="fr">
+          <div class="fteam">Worthing United</div>
+          <div class="fmid"><div class="fvs">vs</div><div class="fdate">12 Jul · 15:00</div><div><span class="floc a">Away</span></div><div class="fcomp">Isthmian SE</div></div>
+          <div class="fteam r stcfc">Steyning Town</div>
+        </div>
+      </div>
+      <div class="adm-note">
+        <div class="adm-item">Adults <span>£10</span></div>
+        <div class="adm-sep"></div>
+        <div class="adm-item">Concessions <span>£6</span></div>
+        <div class="adm-sep"></div>
+        <div class="adm-item">Under 16s <span>Free</span></div>
+        <div class="adm-sep"></div>
+        <div class="adm-item" style="color:var(--muted);font-size:9.5px">Women's: £3 all · U16s free</div>
+      </div>
+    </div>
+    <div>
+      <div class="sh" style="margin-bottom:1rem">
+        <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+        <div class="sh-bot"><h2 class="sh-t">Recent Results</h2><a href="#" class="sh-m">All Results →</a></div>
+      </div>
+      <div class="fbox">
+        <div class="fhd"><div>Home</div><div class="c">Score</div><div class="r">Away</div></div>
+        <div class="fr">
+          <div class="fteam stcfc">Steyning Town</div>
+          <div class="fmid"><div class="fscore">3–1</div><div class="fres w">Win</div><div class="fcomp">31 May · Isthmian SE</div></div>
+          <div class="fteam r">Burgess Hill</div>
+        </div>
+        <div class="fr">
+          <div class="fteam">Peacehaven</div>
+          <div class="fmid"><div class="fscore">1–1</div><div class="fres d">Draw</div><div class="fcomp">24 May · Isthmian SE</div></div>
+          <div class="fteam r stcfc">Steyning Town</div>
+        </div>
+        <div class="fr">
+          <div class="fteam stcfc">Steyning Town</div>
+          <div class="fmid"><div class="fscore">2–0</div><div class="fres w">Win</div><div class="fcomp">17 May · Isthmian SE</div></div>
+          <div class="fteam r">Lancing FC</div>
+        </div>
+        <div class="fr">
+          <div class="fteam">Haywards Heath</div>
+          <div class="fmid"><div class="fscore">2–3</div><div class="fres w">Win</div><div class="fcomp">10 May · Isthmian SE</div></div>
+          <div class="fteam r stcfc">Steyning Town</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HISTORY ═══ -->
+<div class="history">
+  <div class="history-inner">
+    <div class="h-sup">Est. 1892</div>
+    <h2 class="h-head">Our History</h2>
+    <div class="timeline">
+      <div class="tl"><div class="tl-year">1892</div><div class="tl-t">Club Founded</div><div class="tl-b">Established as "Steyning" — one of Sussex's oldest football clubs.</div></div>
+      <div class="tl"><div class="tl-year">1896</div><div class="tl-t">West Sussex League</div><div class="tl-b">Became a founding member of the West Sussex Football League.</div></div>
+      <div class="tl"><div class="tl-year">1979</div><div class="tl-t">Renamed</div><div class="tl-b">Officially became Steyning Town Football Club.</div></div>
+      <div class="tl"><div class="tl-year">1984–86</div><div class="tl-t">Golden Era</div><div class="tl-b">Won Division One title, the Sussex Senior Cup twice and reached the FA Vase quarter-finals.</div></div>
+      <div class="tl"><div class="tl-year">2013</div><div class="tl-t">Community Club</div><div class="tl-b">Merged with Steyning Strikers to become Steyning Town Community FC, growing to 18+ teams.</div></div>
+      <div class="tl"><div class="tl-year">2015</div><div class="tl-t">3G Pitch Opened</div><div class="tl-b">£450,000 all-weather pitch at Shooting Field — funded by the Wilson Trust, HSBC and The Hub.</div></div>
+      <div class="tl"><div class="tl-year">2016–17</div><div class="tl-t">Club of the Year</div><div class="tl-b">Won the Sussex FA Community Club of the Year award back-to-back.</div></div>
+      <div class="tl"><div class="tl-year">2018</div><div class="tl-t">Women's Team</div><div class="tl-b">Established the Women's First Team, now competing in the London & South East Regional WFL.</div></div>
+      <div class="tl"><div class="tl-year">2023–24</div><div class="tl-t">First Promotion</div><div class="tl-b">SCFL Premier champions and Peter Bentley Cup winners. First ever Isthmian League promotion.</div></div>
+      <div class="tl"><div class="tl-year">2025–26</div><div class="tl-t">Champions Again</div><div class="tl-b">Returned to and won the SCFL Premier for a second time. Back in the Isthmian League.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HONOURS ═══ -->
+<div class="ach">
+  <div class="ach-inner">
+    <div class="ach-sup">Club Honours</div>
+    <h2 class="ach-h">A History<br>Of Success</h2>
+    <div class="ach-grid">
+      <div class="ac"><div class="ac-i">🏆</div><div class="ac-t">SCFL Premier Champions</div><div class="ac-b">2023–24 & 2025–26. Promoted to the Isthmian League both times.</div></div>
+      <div class="ac"><div class="ac-i">🏅</div><div class="ac-t">Sussex Senior Cup</div><div class="ac-b">Winners in 1985–86 & 1988–89. Sussex County League Div 2 champions 1977–78.</div></div>
+      <div class="ac"><div class="ac-i">⭐</div><div class="ac-t">Community Club of the Year</div><div class="ac-b">Sussex FA award 2016 & 2017. 2-Star England Football accreditation.</div></div>
+      <div class="ac"><div class="ac-i">👩‍⚽</div><div class="ac-t">Women's Double 2022–23</div><div class="ac-b">SECWFL Division One West champions and League Cup winners.</div></div>
+      <div class="ac"><div class="ac-i">⚽</div><div class="ac-t">FA Vase Quarter-Finals</div><div class="ac-b">Reached the last eight in 1984–85 — the club's best run in the competition.</div></div>
+      <div class="ac"><div class="ac-i">🏗️</div><div class="ac-t">Peter Bentley Cup 2023–24</div><div class="ac-b">Won the cup in the same season as the SCFL Premier title — a memorable double.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SQUAD ═══ -->
+<div class="squad" id="squad">
+  <div class="squad-inner">
+    <div class="sh">
+      <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+      <div class="sh-bot"><h2 class="sh-t">Management &amp; Squad</h2><a href="#" class="sh-m">Full Squad →</a></div>
+    </div>
+    <div class="mgmt-row">
+      <div class="mgmt-card">
+        <div class="mgmt-i">👨‍💼</div>
+        <div>
+          <div class="mgmt-role">Men's First Team Manager</div>
+          <div class="mgmt-name">Brannon O'Neill</div>
+          <div class="mgmt-desc">Appointed May 2026 · 740+ non-league appearances</div>
+        </div>
+      </div>
+      <div class="mgmt-card">
+        <div class="mgmt-i">👩‍💼</div>
+        <div>
+          <div class="mgmt-role">Women's First Team Manager</div>
+          <div class="mgmt-name">Kaz Bridgewater</div>
+          <div class="mgmt-desc">Returned June 2026 · Former STCFC manager</div>
+        </div>
+      </div>
+    </div>
+    <div class="squad-grid">
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">1</div></div><div class="pc-body"><div class="pc-name">Goalkeeper</div><span class="pc-pos">GK</span></div></div>
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">2</div></div><div class="pc-body"><div class="pc-name">Right Back</div><span class="pc-pos">DEF</span></div></div>
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">5</div></div><div class="pc-body"><div class="pc-name">Centre Back</div><span class="pc-pos">DEF</span></div></div>
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">6</div></div><div class="pc-body"><div class="pc-name">Centre Back</div><span class="pc-pos">DEF</span></div></div>
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">8</div></div><div class="pc-body"><div class="pc-name">Midfielder</div><span class="pc-pos">MID</span></div></div>
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">10</div></div><div class="pc-body"><div class="pc-name">Attacking Mid</div><span class="pc-pos">MID</span></div></div>
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">7</div></div><div class="pc-body"><div class="pc-name">Right Winger</div><span class="pc-pos">FWD</span></div></div>
+      <div class="pc"><div class="pc-stripe"></div><div class="pc-img"><div class="pc-num">9</div></div><div class="pc-body"><div class="pc-name">Striker</div><span class="pc-pos">FWD</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TEAMS ═══ -->
+<div class="teams" id="teams">
+  <div class="teams-inner">
+    <div class="sh">
+      <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+      <div class="sh-bot"><h2 class="sh-t">A Team For Everyone</h2></div>
+    </div>
+    <p class="sh-sub">Over 500 registered players across 30+ teams — from Mini-Kickers to Veterans. Every registered player receives a full playing strip.</p>
+    <div class="tg">
+      <div class="tc"><div class="tc-n">Men's First Team</div><div class="tc-l">Pitching-In Isthmian League South East</div></div>
+      <div class="tc"><div class="tc-n">Men's Reserves</div><div class="tc-l">SCFL Division One</div></div>
+      <div class="tc"><div class="tc-n">Women's First Team</div><div class="tc-l">London &amp; South East Regional WFL</div></div>
+      <div class="tc"><div class="tc-n">Women's Development</div><div class="tc-l">Sussex County Women's League</div></div>
+      <div class="tc"><div class="tc-n">U18s Male</div><div class="tc-l">Isthmian U18s League (first time)</div></div>
+      <div class="tc"><div class="tc-n">U18s Female</div><div class="tc-l">SCFL Youth League</div></div>
+      <div class="tc"><div class="tc-n">Mixed Youth (15 teams)</div><div class="tc-l">Horsham &amp; District Youth FL · Saturdays</div></div>
+      <div class="tc"><div class="tc-n">Girls Teams (6 squads)</div><div class="tc-l">Sussex County Women &amp; Girls FL · Sundays</div></div>
+      <div class="tc"><div class="tc-n">Veterans (2 squads)</div><div class="tc-l">Sussex Sunday Football League</div></div>
+      <div class="tc"><div class="tc-n">Development Centre</div><div class="tc-l">After-school coaching · All ages</div></div>
+      <div class="tc"><div class="tc-n">Mini-Kickers</div><div class="tc-l">Training only · All welcome</div></div>
+      <div class="tc"><div class="tc-n">Tournament '26</div><div class="tc-l">Grassroots youth · June 2026</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GROUND & CLUBHOUSE ═══ -->
+<div class="ground" id="ground">
+  <div class="ground-inner">
+    <div class="ground-grid">
+      <div>
+        <div class="g-sup">The Peter Humphreys Memorial Ground</div>
+        <h2 class="g-h">Shooting Field,<br>Steyning</h2>
+        <div class="g-rule"></div>
+        <p class="g-body">Home to the Barrowmen for generations. A £450,000 3G all-weather pitch, funded by the Wilson Memorial Trust, HSBC and The Hub, opened in October 2015. The pitch is maintained twice weekly and independently tested to maintain full FA and FIFA accreditation.</p>
+        <div class="g-addr">Shooting Field · Steyning · West Sussex · BN44 3RQ</div>
+        <div class="clubhouse-hl">The Clubhouse</div>
+        <div class="ch-items">
+          <div class="ch-item"><strong>Bar</strong>Local ales, lager, wine, soft drinks &amp; coffee</div>
+          <div class="ch-item"><strong>Hire</strong>Available for private functions &amp; events</div>
+          <div class="ch-item"><strong>Children's Parties</strong>3G pitch + party tea available</div>
+          <div class="ch-item"><strong>Contact</strong>theclubhouse.steyning@gmail.com</div>
+        </div>
+      </div>
+      <div class="gfs">
+        <div class="gf"><div class="gf-i">⚽</div><div><div class="gf-t">3G All-Weather Pitch</div><div class="gf-s">£450,000 · Opened October 2015 · FA &amp; FIFA accredited</div></div></div>
+        <div class="gf"><div class="gf-i">💡</div><div><div class="gf-t">Floodlit Main Pitch</div><div class="gf-s">All training takes place on the main floodlit pitch at Shooting Field</div></div></div>
+        <div class="gf"><div class="gf-i">🏟️</div><div><div class="gf-t">Refurbished Clubhouse</div><div class="gf-s">Updated changing rooms, medical facilities &amp; bar</div></div></div>
+        <div class="gf"><div class="gf-i">📍</div><div><div class="gf-t">Heart of Steyning</div><div class="gf-s">Accessible from A283 · Free parking available</div></div></div>
+        <div class="gf"><div class="gf-i">⭐</div><div><div class="gf-t">★★ England Football Accredited</div><div class="gf-s">Highest community club standard in English football</div></div></div>
+        <div class="gf"><div class="gf-i">🏗️</div><div><div class="gf-t">Pitch Hire Available</div><div class="gf-s">Weekday &amp; summer slots · Contact Gerry for details</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SHOP ═══ -->
+<div class="shop" id="shop">
+  <div class="shop-inner">
+    <div class="sh">
+      <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+      <div class="sh-bot"><h2 class="sh-t">Club Shop</h2><a href="#" class="sh-m">View All →</a></div>
+    </div>
+    <div class="shop-grid">
+      <div class="prod">
+        <div class="prod-img">
+          <div class="prod-badge">2026–27</div>
+          <div class="prod-ico">👕</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Home Kit</div>
+          <div class="prod-name">Home Shirt 2026–27</div>
+          <div class="prod-desc">Red &amp; white vertical stripes. Edge Teamwear. Sizes XS–3XL.</div>
+          <div class="prod-footer"><div class="prod-price">£45.00</div><button class="prod-btn">Add to Bag</button></div>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="prod-img">
+          <div class="prod-badge">2026–27</div>
+          <div class="prod-ico">👕</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat">Away Kit</div>
+          <div class="prod-name">Away Shirt 2026–27</div>
+          <div class="prod-desc">Blue &amp; black away kit. Edge Teamwear. Sizes XS–3XL.</div>
+          <div class="prod-footer"><div class="prod-price">£45.00</div><button class="prod-btn">Add to Bag</button></div>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="prod-img"><div class="prod-ico">🧣</div></div>
+        <div class="prod-body">
+          <div class="prod-cat">Accessories</div>
+          <div class="prod-name">Club Scarf</div>
+          <div class="prod-desc">Red &amp; white knitted scarf. Barrowmen crest. One size.</div>
+          <div class="prod-footer"><div class="prod-price">£18.00</div><button class="prod-btn">Add to Bag</button></div>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="prod-img"><div class="prod-ico">🧢</div></div>
+        <div class="prod-body">
+          <div class="prod-cat">Accessories</div>
+          <div class="prod-name">Snapback Cap</div>
+          <div class="prod-desc">Red cap with embroidered STCFC badge. Adjustable fit.</div>
+          <div class="prod-footer"><div class="prod-price">£22.00</div><button class="prod-btn">Add to Bag</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SPONSORS ═══ -->
+<div class="sp">
+  <div class="sp-inner">
+    <div class="sp-l">Club Partners 2025–26</div>
+    <p class="sp-s">Proudly supported by local and regional businesses across West Sussex</p>
+
+    <div class="sp-tier">
+      <div class="sp-tl">Elite Sponsors</div>
+      <div class="sp-grid">
+        <div class="sp-item elite">Tates Motor Group</div>
+        <div class="sp-item elite">Golden Barn Garage</div>
+        <div class="sp-item elite">CALA Homes</div>
+        <div class="sp-item elite">PHX Gym</div>
+        <div class="sp-item elite">Singing Hills Golf Course</div>
+        <div class="sp-item elite">Mansell McTaggart</div>
+        <div class="sp-item elite">West Sussex Accountants</div>
+        <div class="sp-item elite">Countrywide Hotels</div>
+        <div class="sp-item elite">Matrix Fitness</div>
+        <div class="sp-item elite">Premier MT</div>
+      </div>
+    </div>
+
+    <div class="sp-tier">
+      <div class="sp-tl">Kit Partner</div>
+      <div class="sp-grid">
+        <div class="sp-item kit">Edge Teamwear</div>
+      </div>
+    </div>
+
+    <div class="sp-tier">
+      <div class="sp-tl">Club Sponsors</div>
+      <div class="sp-grid">
+        <div class="sp-item">Barracuda Ltd</div>
+        <div class="sp-item">SGS Boarding</div>
+        <div class="sp-item">GAP Solutions</div>
+        <div class="sp-item">Cameo Hair</div>
+        <div class="sp-item">Steyning Butchers</div>
+        <div class="sp-item">Boost Pay</div>
+        <div class="sp-item">Gardner &amp; Scardifield</div>
+        <div class="sp-item">Scaffold Sussex</div>
+        <div class="sp-item">OA Surveyors</div>
+        <div class="sp-item">Bright Sea Media</div>
+        <div class="sp-item">Shore Group</div>
+        <div class="sp-item">Finance Planning</div>
+        <div class="sp-item">Insurance Claim Solutions</div>
+        <div class="sp-item">Coles Automotive</div>
+        <div class="sp-item">Birchwood Group</div>
+        <div class="sp-item">MS Roofing Supplies</div>
+        <div class="sp-item">Foundry Cast Iron</div>
+        <div class="sp-item">ST Cowley Contractors</div>
+        <div class="sp-item">Rosie and Java</div>
+        <div class="sp-item">Mortgage Medics</div>
+        <div class="sp-item">Pumpkin Patch Nursery</div>
+        <div class="sp-item">Men Walk Talk</div>
+        <div class="sp-item">HGS Southern</div>
+        <div class="sp-item">Kestrel Alarms</div>
+        <div class="sp-item">Flude</div>
+        <div class="sp-item">JG&amp;JR Langridge</div>
+        <div class="sp-item">Clutch Pro Tour</div>
+        <div class="sp-item">Daikin</div>
+        <div class="sp-item">Bespoke Interior Furniture</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ JOIN / CTA ═══ -->
+<div class="cta" id="join">
+  <div class="cta-stripes"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-inner">
+    <div class="cta-sup">Steyning Town Community FC · Est. 1892</div>
+    <h2 class="cta-h">Join The<br><span class="out">Barrowmen</span></h2>
+    <div class="cta-rule"></div>
+    <p class="cta-b">All ages. All abilities. Complete our registration form and your team manager will be in touch. Girls' fees reduced to grow the section — all welcome.</p>
+    <p class="cta-email">Questions? Email us at <a href="mailto:steyningtownfc@gmail.com">steyningtownfc@gmail.com</a></p>
+    <a href="https://stcfc.co.uk/info/contact-join-us" target="_blank" class="btn-cta">Register Today</a>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="fstrip"></div>
+  <div class="fi">
+    <div class="ftop">
+      <div>
+        <div class="fb-name">Steyning Town <em>FC</em></div>
+        <p class="fb-desc">The Barrowmen — red and white stripes since 1892. Shooting Field, West Sussex. ★★ England Football Accredited.</p>
+        <div class="fsoc">
+          <a href="https://twitter.com/steyningtownfc" target="_blank" title="X / Twitter">𝕏</a>
+          <a href="https://facebook.com/SteyningTownCFC" target="_blank" title="Facebook">📘</a>
+          <a href="https://instagram.com/steyningtownfc" target="_blank" title="Instagram">📸</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Club</div>
+        <ul>
+          <li><a href="#history">History</a></li>
+          <li><a href="#ground">The Ground</a></li>
+          <li><a href="#ground">Clubhouse Hire</a></li>
+          <li><a href="#join">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Football</div>
+        <ul>
+          <li><a href="#squad">First Team</a></li>
+          <li><a href="#teams">Women's</a></li>
+          <li><a href="#teams">Youth</a></li>
+          <li><a href="#teams">Mini-Kickers</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">More</div>
+        <ul>
+          <li><a href="#shop">Club Shop</a></li>
+          <li><a href="#">Sponsors</a></li>
+          <li><a href="#">Policies</a></li>
+          <li><a href="#">Women's X: @stcfcwomen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p class="fcopy">© 2026 Steyning Town Community Football Club · Shooting Field, Steyning, West Sussex, BN44 3RQ · Chair: Paul Hart · Secretary: Aelred Wilkinson</p>
+      <div class="faccred">★★ England Football Accredited · @steyningtownfc</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mob-menu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+});
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  ham.classList.remove('open');
+  mob.classList.remove('open');
+}));
+
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nl a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('on'));
+      const active = document.querySelector(`.nl a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('on');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => observer.observe(s));
+
+document.querySelectorAll('.prod-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const orig = this.textContent;
+    this.textContent = '✓ Added';
+    this.style.background = '#065f46';
+    setTimeout(() => { this.textContent = orig; this.style.background = ''; }, 1800);
+  });
+});
+</script>
+</body>
+</html>
