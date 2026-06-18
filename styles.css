@@ -40,7 +40,7 @@ nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-i
 
 /* ─── PAGE HERO (inner pages) ─── */
 .page-hero{background:var(--dark);position:relative;overflow:hidden;padding:4rem 2rem 3.5rem}
-.page-hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.07) 0,rgba(194,16,32,.07) 44px,transparent 44px,transparent 88px)}
+
 .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--red)}
 .page-hero-inner{position:relative;max-width:1280px;margin:0 auto}
 .ph-label{font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
@@ -168,7 +168,7 @@ nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-i
 
 /* ─── HISTORY TIMELINE ─── */
 .history{background:var(--dark);padding:5rem 2rem;position:relative;overflow:hidden}
-.history::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.05) 0,rgba(194,16,32,.05) 42px,transparent 42px,transparent 84px)}
+
 .history::after{content:'';position:absolute;top:0;left:0;right:0;height:50px;background:var(--white);clip-path:polygon(0 0,100% 0,100% 0,0 100%)}
 .history-inner{position:relative;max-width:1280px;margin:0 auto}
 .h-sup{font-family:'Montserrat';font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.875rem}
@@ -230,7 +230,7 @@ nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-i
 
 /* ─── GROUND & CLUBHOUSE ─── */
 .ground{background:var(--dark);padding:5rem 2rem;position:relative;overflow:hidden}
-.ground::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.05) 0,rgba(194,16,32,.05) 42px,transparent 42px,transparent 84px)}
+
 .ground::after{content:'';position:absolute;top:0;left:0;right:0;height:50px;background:var(--white);clip-path:polygon(0 0,100% 0,100% 0,0 100%)}
 .ground-inner{position:relative;max-width:1280px;margin:0 auto}
 .ground-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
