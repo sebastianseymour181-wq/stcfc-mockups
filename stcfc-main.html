@@ -24,9 +24,8 @@ body{background:var(--white);color:var(--text);font-family:'Nunito Sans',sans-se
 nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.08)}
 .ni{max-width:1280px;margin:0 auto;padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .logo{display:flex;align-items:center;gap:13px;text-decoration:none;flex-shrink:0}
-.logo-badge{width:46px;height:46px;background:var(--red);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
-.logo-badge::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 8px,rgba(255,255,255,.25) 8px,rgba(255,255,255,.25) 16px)}
-.logo-badge span{font-family:'Montserrat';font-size:8px;font-weight:900;color:#fff;letter-spacing:.5px;text-align:center;line-height:1.2;position:relative}
+.logo-badge{width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-badge img{width:48px;height:48px;object-fit:contain;display:block}
 .brand-n{font-family:'Montserrat';font-size:16px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text);line-height:1}
 .brand-n em{color:var(--red);font-style:normal}
 .brand-s{font-size:10px;color:var(--muted);margin-top:2px;font-weight:600;letter-spacing:.3px}
@@ -111,9 +110,9 @@ nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-i
 .news-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:1.25rem}
 .nfeat{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s;text-decoration:none;color:inherit;display:block}
 .nfeat:hover{border-color:var(--red);box-shadow:0 8px 32px rgba(194,16,32,.1);transform:translateY(-2px)}
-.nfeat-img{width:100%;aspect-ratio:16/8;background:linear-gradient(135deg,var(--red-dark),var(--red));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.nfeat-img::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.1) 28px,transparent 28px,transparent 56px)}
-.nfeat-img::after{content:'FEATURED';position:absolute;top:1rem;left:1rem;background:rgba(0,0,0,.45);color:#fff;font-family:'Montserrat';font-size:8.5px;font-weight:800;letter-spacing:2px;padding:4px 9px;border-radius:3px}
+.nfeat-img{width:100%;aspect-ratio:16/8;background:var(--red-dark);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.nfeat-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.nfeat-img::after{content:'FEATURED';position:absolute;top:1rem;left:1rem;background:rgba(0,0,0,.45);color:#fff;font-family:'Montserrat';font-size:8.5px;font-weight:800;letter-spacing:2px;padding:4px 9px;border-radius:3px;z-index:1}
 .ni-logo{font-family:'Montserrat';font-size:2.5rem;font-weight:900;font-style:italic;color:rgba(255,255,255,.2);text-transform:uppercase;position:relative}
 .nfeat-body{padding:1.4rem}
 .ntag{font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:6px}
@@ -123,8 +122,8 @@ nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-i
 .nside{display:flex;flex-direction:column;gap:.875rem}
 .nsm{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:all .15s;text-decoration:none;color:inherit;display:block}
 .nsm:hover{border-color:var(--red);transform:translateX(3px)}
-.nsm-img{width:100%;aspect-ratio:16/7;background:linear-gradient(135deg,var(--red-dark),var(--red));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.nsm-img::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0,rgba(255,255,255,.09) 20px,transparent 20px,transparent 40px)}
+.nsm-img{width:100%;aspect-ratio:16/7;background:var(--red-dark);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.nsm-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .nsm-il{font-family:'Montserrat';font-size:1.5rem;font-weight:900;font-style:italic;color:rgba(255,255,255,.2);position:relative}
 .nsm-body{padding:.875rem 1.1rem}
 .nsm-title{font-family:'Montserrat';font-size:.875rem;font-weight:800;text-transform:uppercase;line-height:1.2;margin-bottom:4px}
@@ -221,7 +220,10 @@ nav{background:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-i
 .ground::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(194,16,32,.05) 0,rgba(194,16,32,.05) 42px,transparent 42px,transparent 84px)}
 .ground::after{content:'';position:absolute;top:0;left:0;right:0;height:50px;background:var(--white);clip-path:polygon(0 0,100% 0,100% 0,0 100%)}
 .ground-inner{position:relative;max-width:1280px;margin:0 auto}
-.ground-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ground-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ground-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.625rem;margin-top:2rem}
+.ground-imgs img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block;border:1px solid rgba(255,255,255,.06)}
+.ground-imgs img:first-child{grid-column:span 2;aspect-ratio:16/7}
 .g-sup{font-family:'Montserrat';font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
 .g-h{font-family:'Montserrat';font-size:clamp(2rem,4vw,3rem);font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;line-height:.9;margin-bottom:1rem}
 .g-rule{width:48px;height:3px;background:var(--red);margin-bottom:1.5rem}
@@ -353,7 +355,7 @@ footer{background:var(--dark)}
 <nav id="nav">
   <div class="ni">
     <a href="#home" class="logo">
-      <div class="logo-badge"><span>ST<br>FC</span></div>
+      <div class="logo-badge"><img src="https://stcfc.co.uk/wp-content/uploads/2025/05/cropped-STFC-Red-Logo.png" alt="Steyning Town FC Badge"></div>
       <div>
         <div class="brand-n">Steyning Town <em>FC</em></div>
         <div class="brand-s">The Barrowmen · Est. 1892</div>
@@ -447,7 +449,7 @@ footer{background:var(--dark)}
   </div>
   <div class="news-layout">
     <a href="#" class="nfeat">
-      <div class="nfeat-img"><span class="ni-logo">STCFC</span></div>
+      <div class="nfeat-img"><img src="https://stcfc.co.uk/wp-content/uploads/2026/05/Isthmian10.jpg" alt="Brannon O'Neill appointed Men's First Team Manager"></div>
       <div class="nfeat-body">
         <div class="ntag">Management</div>
         <h3 class="ntitle">Brannon O'Neill Appointed Men's First Team Manager</h3>
@@ -457,7 +459,7 @@ footer{background:var(--dark)}
     </a>
     <div class="nside">
       <a href="#" class="nsm">
-        <div class="nsm-img"><span class="nsm-il">STCFC</span></div>
+        <div class="nsm-img"><img src="https://stcfc.co.uk/wp-content/uploads/2023/10/Kaz5-e1781201615850-400x250.jpg" alt="Kaz Bridgewater"></div>
         <div class="nsm-body">
           <div class="ntag">Management</div>
           <div class="nsm-title">Kaz Bridgewater Returns as Women's First Team Manager</div>
@@ -465,7 +467,7 @@ footer{background:var(--dark)}
         </div>
       </a>
       <a href="#" class="nsm">
-        <div class="nsm-img"><span class="nsm-il">STCFC</span></div>
+        <div class="nsm-img"><img src="https://stcfc.co.uk/wp-content/uploads/2026/05/IsthU18-400x250.jpg" alt="Isthmian U18s"></div>
         <div class="nsm-body">
           <div class="ntag">Club News</div>
           <div class="nsm-title">Isthmian U18s — Club Accepted Into League for First Time</div>
@@ -473,7 +475,7 @@ footer{background:var(--dark)}
         </div>
       </a>
       <a href="#" class="nsm">
-        <div class="nsm-img"><span class="nsm-il">STCFC</span></div>
+        <div class="nsm-img"><img src="https://stcfc.co.uk/wp-content/uploads/2026/06/W-Open1-1-e1781503422528-400x250.jpg" alt="Women's Open Sessions"></div>
         <div class="nsm-body">
           <div class="ntag">Community</div>
           <div class="nsm-title">Women's Open Sessions Start 17 June — All Welcome</div>
@@ -666,6 +668,11 @@ footer{background:var(--dark)}
         <div class="g-rule"></div>
         <p class="g-body">Home to the Barrowmen for generations. A £450,000 3G all-weather pitch, funded by the Wilson Memorial Trust, HSBC and The Hub, opened in October 2015. The pitch is maintained twice weekly and independently tested to maintain full FA and FIFA accreditation.</p>
         <div class="g-addr">Shooting Field · Steyning · West Sussex · BN44 3RQ</div>
+        <div class="ground-imgs">
+          <img src="https://stcfc.co.uk/wp-content/uploads/2025/11/PitchHire.jpg" alt="Shooting Field 3G Pitch">
+          <img src="https://stcfc.co.uk/wp-content/uploads/2023/08/ch1.jpg" alt="STCFC Clubhouse">
+          <img src="https://stcfc.co.uk/wp-content/uploads/2023/03/Clubhouse1.jpg" alt="STCFC Clubhouse Interior">
+        </div>
         <div class="clubhouse-hl">The Clubhouse</div>
         <div class="ch-items">
           <div class="ch-item"><strong>Bar</strong>Local ales, lager, wine, soft drinks &amp; coffee</div>
@@ -827,7 +834,8 @@ footer{background:var(--dark)}
     <div class="ftop">
       <div>
         <div class="fb-name">Steyning Town <em>FC</em></div>
-        <p class="fb-desc">The Barrowmen — red and white stripes since 1892. Shooting Field, West Sussex. ★★ England Football Accredited.</p>
+        <p class="fb-desc">The Barrowmen — red and white stripes since 1892. Shooting Field, West Sussex.</p>
+        <img src="https://stcfc.co.uk/wp-content/uploads/2022/06/EnglandAccredited-RED_SMALL-e1654188429637.png" alt="England Football Accredited" style="height:44px;margin-top:.875rem;opacity:.7;display:block">
         <div class="fsoc">
           <a href="https://twitter.com/steyningtownfc" target="_blank" title="X / Twitter">𝕏</a>
           <a href="https://facebook.com/SteyningTownCFC" target="_blank" title="Facebook">📘</a>
