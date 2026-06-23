@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if pageTitle %}{{ pageTitle }} | {% endif %}Steyning Town Community FC</title>
+<meta name="description" content="{{ pageDescription or 'Steyning Town Community FC — Shooting Field, Steyning, West Sussex. SCFL Premier champions 2025-26, now in the Pitching-In Isthmian League. 500+ players across 30+ teams.' }}">
+<meta name="theme-color" content="#C21020">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+<div class="promo">
+  <span class="promo-chip">Champions</span>
+  SCFL Premier Champions 2025–26 · Now in the Pitching-In Isthmian League South East Division
+</div>
+
+<nav id="nav">
+  <div class="ni">
+    <a href="/" class="logo">
+      <div class="logo-badge"><img src="https://stcfc.co.uk/wp-content/uploads/2025/05/cropped-STFC-Red-Logo.png" alt="Steyning Town FC Badge"></div>
+      <div>
+        <div class="brand-n">Steyning Town <em>FC</em></div>
+        <div class="brand-s">Steyning · Est. 1892</div>
+      </div>
+    </a>
+    <ul class="nl">
+      <li><a href="/" {% if navActive == "home" %}class="on"{% endif %}>Home</a></li>
+      <li><a href="/news" {% if navActive == "news" %}class="on"{% endif %}>News</a></li>
+      <li><a href="/fixtures" {% if navActive == "fixtures" %}class="on"{% endif %}>Fixtures</a></li>
+      <li><a href="/squad" {% if navActive == "squad" %}class="on"{% endif %}>Squad</a></li>
+      <li><a href="/teams" {% if navActive == "teams" %}class="on"{% endif %}>Teams</a></li>
+      <li><a href="/ground" {% if navActive == "ground" %}class="on"{% endif %}>Ground</a></li>
+      <li><a href="/shop" {% if navActive == "shop" %}class="on"{% endif %}>Shop</a></li>
+      <li><a href="/sponsors" {% if navActive == "sponsors" %}class="on"{% endif %}>Partners</a></li>
+      <li><a href="/faq" {% if navActive == "faq" %}class="on"{% endif %}>FAQs</a></li>
+      <li><a href="/join" class="nc-btn{% if navActive == 'join' %} on{% endif %}"{% if navActive == 'join' %} style="background:var(--dark)!important"{% endif %}>Join Us</a></li>
+    </ul>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mob-menu">
+  <a href="/">Home</a>
+  <a href="/news">News</a>
+  <a href="/fixtures">Fixtures &amp; Results</a>
+  <a href="/squad">Squad</a>
+  <a href="/teams">Teams</a>
+  <a href="/ground">Ground &amp; Clubhouse</a>
+  <a href="/shop">Shop</a>
+  <a href="/sponsors">Partners</a>
+  <a href="/faq">FAQs</a>
+  <a href="/join" class="mc-btn">Join Us</a>
+</div>
+
+{{ content | safe }}
+
+<footer>
+  <div class="fstrip"></div>
+  <div class="fi">
+    <div class="ftop">
+      <div>
+        <div class="fb-name">Steyning Town <em>FC</em></div>
+        <p class="fb-desc">Red and white stripes since 1892. Shooting Field, West Sussex.</p>
+        <img src="https://stcfc.co.uk/wp-content/uploads/2022/06/EnglandAccredited-RED_SMALL-e1654188429637.png" alt="England Football Accredited" style="height:44px;margin-top:.875rem;opacity:.7;display:block">
+        <div class="fsoc">
+          <a href="https://twitter.com/steyningtownfc" target="_blank" title="X / Twitter">𝕏</a>
+          <a href="https://facebook.com/SteyningTownCFC" target="_blank" title="Facebook">FB</a>
+          <a href="https://instagram.com/steyningtownfc" target="_blank" title="Instagram">IG</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Club</div>
+        <ul>
+          <li><a href="/">History</a></li>
+          <li><a href="/ground">The Ground</a></li>
+          <li><a href="/ground">Clubhouse Hire</a></li>
+          <li><a href="/join">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Football</div>
+        <ul>
+          <li><a href="/squad">First Team</a></li>
+          <li><a href="/teams">Women's</a></li>
+          <li><a href="/teams">Youth</a></li>
+          <li><a href="/teams">Mini-Kickers</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">More</div>
+        <ul>
+          <li><a href="/shop">Club Shop</a></li>
+          <li><a href="/sponsors">Club Partners</a></li>
+          <li><a href="/faq">FAQs</a></li>
+          <li><a href="#">Policies</a></li>
+          <li><a href="#">@stcfcwomen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p class="fcopy">© 2026 Steyning Town Community Football Club · Shooting Field, Steyning, West Sussex, BN44 3RQ · Chair: Paul Hart · Secretary: Aelred Wilkinson</p>
+      <div class="faccred">★★ England Football Accredited · @steyningtownfc</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mob-menu');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
+mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); }));
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+</script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", function(user) {
+    if (!user) {
+      window.netlifyIdentity.on("login", function() {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+</script>
+</body>
+</html>

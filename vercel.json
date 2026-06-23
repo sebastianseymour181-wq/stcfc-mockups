@@ -1,13 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/stcfc-main.html" },
-    { "source": "/news", "destination": "/news.html" },
-    { "source": "/fixtures", "destination": "/fixtures.html" },
-    { "source": "/squad", "destination": "/squad.html" },
-    { "source": "/teams", "destination": "/teams.html" },
-    { "source": "/ground", "destination": "/ground.html" },
-    { "source": "/shop", "destination": "/shop.html" },
-    { "source": "/faq", "destination": "/faq.html" },
-    { "source": "/join", "destination": "/join.html" }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site",
+  "framework": null,
+  "cleanUrls": true
 }

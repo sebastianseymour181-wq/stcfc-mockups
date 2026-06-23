@@ -1,0 +1,81 @@
+---
+layout: base.njk
+navActive: fixtures
+permalink: /fixtures/
+pageTitle: Fixtures & Results
+pageDescription: "Steyning Town Community FC fixtures and results. Pitching-In Isthmian League South East Division 2026–27. Admission: Adults £10, Concessions £6, Under 16s free."
+---
+
+<div class="page-hero" style="background:linear-gradient(rgba(18,6,8,.8),rgba(18,6,8,.9)),url('https://stcfc.co.uk/wp-content/uploads/2022/09/IMG_2293.jpg') center/cover no-repeat">
+  <div class="page-hero-inner">
+    <div class="ph-label">Pitching-In Isthmian League South East · 2026–27</div>
+    <h1 class="ph-title">Fixtures &amp; <span class="out">Results</span></h1>
+    <p class="ph-sub">Men's First Team · Shooting Field, Steyning, BN44 3RQ · Adults £10 · Concessions £6 · Under 16s free</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="fx-results-grid">
+    <div>
+      <div class="sh" style="margin-bottom:1rem">
+        <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+        <div class="sh-bot"><h2 class="sh-t">Upcoming Fixtures</h2></div>
+      </div>
+      <div class="fbox">
+        <div class="fhd"><div>Home</div><div class="c">Date · KO</div><div class="r">Away</div></div>
+        {% for f in fixtures.upcoming %}
+        <div class="fr">
+          {% if f.location == "h" %}
+          <div class="fteam stcfc">Steyning Town</div>
+          <div class="fmid"><div class="fvs">vs</div><div class="fdate">{{ f.date }} · {{ f.time }}</div><div><span class="floc h">Home</span></div><div class="fcomp">{{ f.competition }}</div></div>
+          <div class="fteam r">{{ f.opponent }}</div>
+          {% else %}
+          <div class="fteam">{{ f.opponent }}</div>
+          <div class="fmid"><div class="fvs">vs</div><div class="fdate">{{ f.date }} · {{ f.time }}</div><div><span class="floc a">Away</span></div><div class="fcomp">{{ f.competition }}</div></div>
+          <div class="fteam r stcfc">Steyning Town</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="adm-note">
+        <div class="adm-item">Adults <span>£10</span></div>
+        <div class="adm-sep"></div>
+        <div class="adm-item">Concessions <span>£6</span></div>
+        <div class="adm-sep"></div>
+        <div class="adm-item">Under 16s <span>Free</span></div>
+        <div class="adm-sep"></div>
+        <div class="adm-item" style="color:var(--muted);font-size:9.5px">Women's: £3 all · U16s free</div>
+      </div>
+    </div>
+    <div>
+      <div class="sh" style="margin-bottom:1rem">
+        <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+        <div class="sh-bot"><h2 class="sh-t">Recent Results</h2></div>
+      </div>
+      <div class="fbox">
+        <div class="fhd"><div>Home</div><div class="c">Score</div><div class="r">Away</div></div>
+        {% for r in fixtures.results %}
+        <div class="fr">
+          {% if r.location == "h" %}
+          <div class="fteam stcfc">Steyning Town</div>
+          <div class="fmid"><div class="fscore">{{ r.steyningScore }}–{{ r.opponentScore }}</div><div class="fres {{ r.result }}">{% if r.result == "w" %}Win{% elif r.result == "d" %}Draw{% else %}Loss{% endif %}</div><div class="fcomp">{{ r.date }} · {{ r.competition }}</div></div>
+          <div class="fteam r">{{ r.opponent }}</div>
+          {% else %}
+          <div class="fteam">{{ r.opponent }}</div>
+          <div class="fmid"><div class="fscore">{{ r.opponentScore }}–{{ r.steyningScore }}</div><div class="fres {{ r.result }}">{% if r.result == "w" %}Win{% elif r.result == "d" %}Draw{% else %}Loss{% endif %}</div><div class="fcomp">{{ r.date }} · {{ r.competition }}</div></div>
+          <div class="fteam r stcfc">Steyning Town</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="join-strip">
+  <div class="join-strip-inner">
+    <div class="join-strip-t">Watch Us Play</div>
+    <p class="join-strip-s">Shooting Field, Steyning, BN44 3RQ · Free parking · Bar open matchdays</p>
+    <a href="/ground" class="btn-join">Find The Ground</a>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: src/uploads
+public_folder: /uploads
+
+collections:
+  - name: news
+    label: News Articles
+    folder: src/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - First Team
+          - Women's Team
+          - Youth
+          - Club News
+          - Facilities
+          - Development Centre
+      - { label: Summary, name: summary, widget: text, hint: "Short summary shown on the news listing page" }
+      - { label: Cover Image URL, name: image, widget: string, required: false, hint: "Full URL or leave blank" }
+      - { label: Image Alt Text, name: imageAlt, widget: string, required: false }
+      - { label: Featured, name: featured, widget: boolean, default: false, hint: "Show as top story on homepage" }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: fixtures_data
+    label: Fixtures & Results
+    files:
+      - label: Fixtures & Results
+        name: fixtures
+        file: src/_data/fixtures.json
+        fields:
+          - label: Upcoming Fixtures
+            name: upcoming
+            widget: list
+            fields:
+              - { label: Opponent, name: opponent, widget: string }
+              - { label: Date, name: date, widget: string, hint: "e.g. 21 Jun" }
+              - { label: Kick-off Time, name: time, widget: string, hint: "e.g. 15:00" }
+              - label: Home or Away
+                name: location
+                widget: select
+                options:
+                  - { label: Home, value: h }
+                  - { label: Away, value: a }
+              - { label: Competition, name: competition, widget: string, hint: "e.g. Isthmian SE" }
+          - label: Recent Results
+            name: results
+            widget: list
+            fields:
+              - { label: Opponent, name: opponent, widget: string }
+              - { label: Date, name: date, widget: string, hint: "e.g. 31 May" }
+              - { label: Steyning Score, name: steyningScore, widget: number }
+              - { label: Opponent Score, name: opponentScore, widget: number }
+              - label: Home or Away
+                name: location
+                widget: select
+                options:
+                  - { label: Home, value: h }
+                  - { label: Away, value: a }
+              - { label: Competition, name: competition, widget: string }
+              - label: Result
+                name: result
+                widget: select
+                options:
+                  - { label: Win, value: w }
+                  - { label: Draw, value: d }
+                  - { label: Loss, value: l }
+
+  - name: squad_data
+    label: Squad
+    files:
+      - label: Players
+        name: squad
+        file: src/_data/squad.json
+        fields:
+          - label: Players
+            name: players
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Number, name: number, widget: number, required: false }
+              - label: Position
+                name: position
+                widget: select
+                options:
+                  - Goalkeeper
+                  - Defender
+                  - Midfielder
+                  - Forward
+              - { label: Photo URL, name: photo, widget: string, required: false }

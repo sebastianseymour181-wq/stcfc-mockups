@@ -1,0 +1,57 @@
+---
+layout: base.njk
+navActive: news
+permalink: /news/
+pageTitle: Latest News
+pageDescription: "Latest news from Steyning Town Community FC. Management appointments, match reports, community updates and club announcements."
+---
+
+<div class="page-hero" style="background:linear-gradient(rgba(18,6,8,.8),rgba(18,6,8,.9)),url('https://stcfc.co.uk/wp-content/uploads/2026/06/Pre-Season1.jpg') center/cover no-repeat">
+  <div class="page-hero-inner">
+    <div class="ph-label">Steyning Town Community FC</div>
+    <h1 class="ph-title">Latest <span class="out">News</span></h1>
+    <p class="ph-sub">Management appointments, match reports, community updates and announcements from the club.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  {% if collections.news.length > 0 %}
+  <div class="news-layout">
+    <a href="{{ collections.news[0].url }}" class="nfeat">
+      <div class="nfeat-img">
+        {% if collections.news[0].data.image %}
+        <img src="{{ collections.news[0].data.image }}" alt="{{ collections.news[0].data.imageAlt or collections.news[0].data.title }}">
+        {% endif %}
+      </div>
+      <div class="nfeat-body">
+        <div class="ntag">{{ collections.news[0].data.category or "Club News" }}</div>
+        <h2 class="ntitle">{{ collections.news[0].data.title }}</h2>
+        <p class="nbody">{{ collections.news[0].data.summary }}</p>
+        <div class="ndate">{{ collections.news[0].date | dateDisplay }}</div>
+      </div>
+    </a>
+    <div class="nside">
+      {% for post in collections.news | slice(1) %}
+      <a href="{{ post.url }}" class="nsm">
+        <div class="nsm-img">{% if post.data.image %}<img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or post.data.title }}">{% endif %}</div>
+        <div class="nsm-body">
+          <div class="ntag">{{ post.data.category or "Club News" }}</div>
+          <div class="nsm-title">{{ post.data.title }}</div>
+          <div class="nsm-date">{{ post.date | dateDisplay }}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p style="color:var(--muted);font-style:italic">No news articles yet. Check back soon.</p>
+  {% endif %}
+</div>
+
+<div class="join-strip">
+  <div class="join-strip-inner">
+    <div class="join-strip-t">Join Steyning Town FC</div>
+    <p class="join-strip-s">All ages, all abilities. Register today and your team manager will be in touch.</p>
+    <a href="https://stcfc.co.uk/info/contact-join-us" target="_blank" class="btn-join">Register Now</a>
+  </div>
+</div>

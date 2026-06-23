@@ -1,0 +1,102 @@
+{
+  "upcoming": [
+    {
+      "opponent": "Horsham FC",
+      "date": "21 Jun",
+      "time": "15:00",
+      "location": "h",
+      "competition": "Isthmian SE"
+    },
+    {
+      "opponent": "East Grinstead",
+      "date": "28 Jun",
+      "time": "14:00",
+      "location": "a",
+      "competition": "Isthmian SE"
+    },
+    {
+      "opponent": "Lancing FC",
+      "date": "5 Jul",
+      "time": "15:00",
+      "location": "h",
+      "competition": "Isthmian SE"
+    },
+    {
+      "opponent": "Worthing United",
+      "date": "12 Jul",
+      "time": "15:00",
+      "location": "a",
+      "competition": "Isthmian SE"
+    },
+    {
+      "opponent": "Chichester City",
+      "date": "19 Jul",
+      "time": "15:00",
+      "location": "h",
+      "competition": "Isthmian SE"
+    },
+    {
+      "opponent": "Littlehampton Town",
+      "date": "26 Jul",
+      "time": "15:00",
+      "location": "a",
+      "competition": "Isthmian SE"
+    }
+  ],
+  "results": [
+    {
+      "opponent": "Burgess Hill",
+      "date": "31 May",
+      "steyningScore": 3,
+      "opponentScore": 1,
+      "location": "h",
+      "competition": "Isthmian SE",
+      "result": "w"
+    },
+    {
+      "opponent": "Peacehaven",
+      "date": "24 May",
+      "steyningScore": 1,
+      "opponentScore": 1,
+      "location": "a",
+      "competition": "Isthmian SE",
+      "result": "d"
+    },
+    {
+      "opponent": "Lancing FC",
+      "date": "17 May",
+      "steyningScore": 2,
+      "opponentScore": 0,
+      "location": "h",
+      "competition": "Isthmian SE",
+      "result": "w"
+    },
+    {
+      "opponent": "Haywards Heath",
+      "date": "10 May",
+      "steyningScore": 3,
+      "opponentScore": 2,
+      "location": "a",
+      "competition": "Isthmian SE",
+      "result": "w"
+    },
+    {
+      "opponent": "Eastbourne Town",
+      "date": "3 May",
+      "steyningScore": 1,
+      "opponentScore": 1,
+      "location": "h",
+      "competition": "Isthmian SE",
+      "result": "d"
+    },
+    {
+      "opponent": "Newhaven FC",
+      "date": "26 Apr",
+      "steyningScore": 2,
+      "opponentScore": 0,
+      "location": "a",
+      "competition": "Isthmian SE",
+      "result": "w"
+    }
+  ]
+}

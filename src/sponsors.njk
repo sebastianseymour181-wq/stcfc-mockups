@@ -1,0 +1,145 @@
+---
+layout: base.njk
+navActive: sponsors
+permalink: /sponsors/
+pageTitle: Club Partners
+pageDescription: "Steyning Town Community FC is proudly supported by local and regional businesses across West Sussex. Find out how to become a club partner for 2025–26."
+---
+<style>
+.spc-elite-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:1.75rem}
+.spc-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.spc-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.09);transform:translateY(-2px)}
+.spc-logo{aspect-ratio:3/2;background:linear-gradient(135deg,#fafafa 0%,#f0eeee 100%);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.spc-logo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),transparent)}
+.spc-initials{font-family:'Montserrat';font-size:1.6rem;font-weight:900;color:var(--red);letter-spacing:-1px;opacity:.18;user-select:none}
+.spc-logo img{width:100%;height:100%;object-fit:contain;padding:1rem}
+.spc-body{padding:1rem 1.1rem 1.2rem;flex:1;display:flex;flex-direction:column;gap:.3rem}
+.spc-cat{font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#9A7800;background:#FFFBE8;border:1px solid rgba(212,175,55,.3);border-radius:3px;padding:2px 7px;display:inline-block;width:fit-content}
+.spc-name{font-family:'Montserrat';font-size:.95rem;font-weight:900;text-transform:uppercase;color:var(--text);line-height:1.25;margin-top:.15rem}
+.spc-link{font-family:'Montserrat';font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);text-decoration:none;margin-top:auto;padding-top:.6rem;display:inline-flex;align-items:center;gap:.35rem;opacity:.7}
+.spc-link:hover{opacity:1}
+.spc-link::after{content:'→'}
+
+.spc-kit-card{background:var(--dark);border-radius:12px;padding:2rem 2.5rem;display:flex;align-items:center;gap:2rem;margin-top:1.75rem;position:relative;overflow:hidden}
+.spc-kit-card::before{content:'';position:absolute;right:-20px;top:-20px;width:160px;height:160px;border-radius:50%;background:rgba(194,16,32,.12)}
+.spc-kit-logo{width:80px;height:80px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.spc-kit-logo img{width:100%;height:100%;object-fit:contain;padding:.6rem}
+.spc-kit-tag{font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:.4rem}
+.spc-kit-name{font-family:'Montserrat';font-size:1.4rem;font-weight:900;text-transform:uppercase;color:#fff;line-height:1.1}
+.spc-kit-desc{font-size:13px;color:rgba(255,255,255,.55);margin-top:.4rem;line-height:1.6}
+.spc-kit-initials{font-family:'Montserrat';font-size:1.4rem;font-weight:900;color:rgba(255,255,255,.15)}
+
+.spc-club-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.75rem;margin-top:1.25rem}
+.spc-club-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .18s,transform .18s}
+.spc-club-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-1px);border-color:rgba(194,16,32,.2)}
+.spc-club-logo{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;padding:.5rem;overflow:hidden}
+.spc-club-logo img{width:100%;height:100%;object-fit:contain}
+.spc-club-name{font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);padding:.4rem .6rem .5rem;text-align:center;border-top:1px solid var(--border);line-height:1.3}
+@media(max-width:900px){.spc-club-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:600px){.spc-club-grid{grid-template-columns:repeat(3,1fr)}}
+
+.spc-become{background:var(--off);border:1px solid var(--border);border-radius:14px;padding:2.5rem;margin-top:3rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}
+.spc-become-t{font-family:'Montserrat';font-size:1.15rem;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:.4rem}
+.spc-become-s{color:var(--muted);font-size:13.5px;line-height:1.65}
+.spc-become-s strong{color:var(--text)}
+
+@media(max-width:900px){.spc-elite-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){
+  .spc-elite-grid{grid-template-columns:repeat(2,1fr)}
+  .spc-kit-card{flex-direction:column;align-items:flex-start;gap:1.25rem}
+  .spc-become{grid-template-columns:1fr}
+}
+@media(max-width:400px){.spc-elite-grid{grid-template-columns:1fr}}
+</style>
+
+<div class="page-hero" style="background:linear-gradient(rgba(18,6,8,.82),rgba(18,6,8,.9)),url('https://stcfc.co.uk/wp-content/uploads/2026/05/Partners.jpg') center/cover no-repeat">
+  <div class="page-hero-inner">
+    <div class="ph-label">2025–26 Season</div>
+    <h1 class="ph-title">Club <span class="out">Partners</span></h1>
+    <p class="ph-sub">Steyning Town Community FC is proudly supported by local and regional businesses across West Sussex. Thank you to every partner for making this club possible.</p>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:3.5rem">
+
+  <!-- ELITE SPONSORS -->
+  <div class="sh">
+    <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+    <div class="sh-bot"><h2 class="sh-t">Elite Partners</h2></div>
+  </div>
+  <div class="spc-elite-grid">
+    {% for s in sponsors.elite %}
+    <div class="spc-card">
+      <div class="spc-logo">
+        {% if s.logo %}
+          <img src="{{ s.logo }}" alt="{{ s.name }} logo">
+        {% else %}
+          <div class="spc-initials">{{ s.name | truncate(2, true, "") | upper }}</div>
+        {% endif %}
+      </div>
+      <div class="spc-body">
+        <span class="spc-cat">{{ s.category }}</span>
+        <div class="spc-name">{{ s.name }}</div>
+        {% if s.url %}
+          <a class="spc-link" href="{{ s.url }}" target="_blank" rel="noopener">Visit Website</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- KIT PARTNER -->
+  <div class="sh" style="margin-top:3rem">
+    <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+    <div class="sh-bot"><h2 class="sh-t">Official Kit Partner</h2></div>
+  </div>
+  <div class="spc-kit-card">
+    <div class="spc-kit-logo">
+      <img src="https://stcfc.co.uk/wp-content/uploads/2025/05/Edge-Teamwear-Logo-Large.png" alt="Edge Teamwear logo" style="width:100%;height:100%;object-fit:contain;padding:.5rem;filter:brightness(0) invert(1)">
+    </div>
+    <div>
+      <div class="spc-kit-tag">Official Kit Partner · 2025–26</div>
+      <div class="spc-kit-name">Edge Teamwear</div>
+      <div class="spc-kit-desc">All STCFC playing strips — home red &amp; white stripes and away blue &amp; black — are produced by Edge Teamwear. Every registered player receives a full kit (shirt, shorts &amp; socks).</div>
+    </div>
+  </div>
+
+  <!-- CLUB SPONSORS -->
+  <div class="sh" style="margin-top:3rem">
+    <div class="sh-top"><div class="sh-r"></div><div class="sh-d"></div></div>
+    <div class="sh-bot"><h2 class="sh-t">Club Sponsors</h2></div>
+  </div>
+  <div class="spc-club-grid">
+    {% for s in sponsors.club %}
+      {% if s.url %}
+        <a class="spc-club-card" href="{{ s.url }}" target="_blank" rel="noopener">
+          <div class="spc-club-logo"><img src="{{ s.logo }}" alt="{{ s.name }} logo" loading="lazy"></div>
+          <div class="spc-club-name">{{ s.name }}</div>
+        </a>
+      {% else %}
+        <div class="spc-club-card">
+          <div class="spc-club-logo"><img src="{{ s.logo }}" alt="{{ s.name }} logo" loading="lazy"></div>
+          <div class="spc-club-name">{{ s.name }}</div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- BECOME A PARTNER -->
+  <div class="spc-become">
+    <div>
+      <div class="spc-become-t">Become a Club Partner</div>
+      <div class="spc-become-s">Support Steyning Town Community FC and put your business in front of <strong>500+ registered players</strong>, their families, and thousands of supporters across West Sussex. Partnership packages available at every level — from pitch-side advertising to shirt sponsorship and matchday hospitality.</div>
+    </div>
+    <a href="mailto:steyningtownfc@gmail.com?subject=Sponsorship%20Enquiry" class="btn-join" style="white-space:nowrap;flex-shrink:0">Get In Touch</a>
+  </div>
+
+</div>
+
+<div class="join-strip" style="margin-top:4rem">
+  <div class="join-strip-inner">
+    <div class="join-strip-t">Thank You To All Our Partners</div>
+    <p class="join-strip-s">Without the support of our sponsors, none of this would be possible.</p>
+    <a href="mailto:steyningtownfc@gmail.com" class="btn-join">Sponsorship Enquiries</a>
+  </div>
+</div>

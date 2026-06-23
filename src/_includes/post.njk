@@ -1,0 +1,34 @@
+---
+layout: base.njk
+navActive: news
+---
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="ph-label">{{ category or "Club News" }}</div>
+    <h1 class="ph-title">{{ title }}</h1>
+    <p class="ph-sub">{{ date | dateDisplay }}{% if author %} · {{ author }}{% endif %}</p>
+  </div>
+</div>
+
+<div class="wrap" style="max-width:860px">
+  {% if image %}
+  <img src="{{ image }}" alt="{{ imageAlt or title }}" style="width:100%;border-radius:12px;margin-bottom:2.5rem;max-height:440px;object-fit:cover;display:block">
+  {% endif %}
+  <div style="font-size:16px;line-height:1.9;color:var(--text)">
+    {{ content | safe }}
+  </div>
+  <div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <span style="font-family:'Montserrat';font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">{{ date | dateDisplay }}</span>
+    {% if category %}<span style="background:var(--off);border:1px solid var(--border);border-radius:3px;font-family:'Montserrat';font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);padding:3px 9px">{{ category }}</span>{% endif %}
+    <a href="/news" style="margin-left:auto;color:var(--red);font-family:'Montserrat';font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;text-decoration:none">← Back to News</a>
+  </div>
+</div>
+
+<div class="join-strip">
+  <div class="join-strip-inner">
+    <div class="join-strip-t">More Club News</div>
+    <p class="join-strip-s">Follow us for updates, match reports and club announcements.</p>
+    <a href="/news" class="btn-join">All News</a>
+  </div>
+</div>
