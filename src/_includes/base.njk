@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#C21020">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="https://stcfc.co.uk/wp-content/uploads/2025/05/cropped-STFC-Red-Logo.png">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -35,6 +36,7 @@
       <li><a href="/ground" {% if navActive == "ground" %}class="on"{% endif %}>Ground</a></li>
       <li><a href="/shop" {% if navActive == "shop" %}class="on"{% endif %}>Shop</a></li>
       <li><a href="/sponsors" {% if navActive == "sponsors" %}class="on"{% endif %}>Partners</a></li>
+      <li><a href="/gallery" {% if navActive == "gallery" %}class="on"{% endif %}>Gallery</a></li>
       <li><a href="/faq" {% if navActive == "faq" %}class="on"{% endif %}>FAQs</a></li>
       <li><a href="/join" class="nc-btn{% if navActive == 'join' %} on{% endif %}"{% if navActive == 'join' %} style="background:var(--dark)!important"{% endif %}>Join Us</a></li>
     </ul>
@@ -51,6 +53,7 @@
   <a href="/ground">Ground &amp; Clubhouse</a>
   <a href="/shop">Shop</a>
   <a href="/sponsors">Partners</a>
+  <a href="/gallery">Gallery</a>
   <a href="/faq">FAQs</a>
   <a href="/join" class="mc-btn">Join Us</a>
 </div>
@@ -95,7 +98,7 @@
           <li><a href="/shop">Club Shop</a></li>
           <li><a href="/sponsors">Club Partners</a></li>
           <li><a href="/faq">FAQs</a></li>
-          <li><a href="#">Policies</a></li>
+          <li><a href="/policies">Policies</a></li>
           <li><a href="#">@stcfcwomen</a></li>
         </ul>
       </div>
@@ -123,6 +126,20 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
   });
 });
+</script>
+<div class="cookie-bar" id="cookieBar">
+  <div class="cookie-text">We use cookies to ensure you get the best experience on our website. <a href="/policies#cookies">Learn more</a></div>
+  <div class="cookie-btns">
+    <button class="cookie-accept" id="cookieAccept">Accept</button>
+    <button class="cookie-decline" id="cookieDecline">Decline</button>
+  </div>
+</div>
+<script>
+(function(){
+  if(localStorage.getItem('cookieConsent')){document.getElementById('cookieBar').classList.add('hidden');return;}
+  document.getElementById('cookieAccept').onclick=function(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookieBar').classList.add('hidden');}
+  document.getElementById('cookieDecline').onclick=function(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookieBar').classList.add('hidden');}
+})();
 </script>
 <script>
 if (window.netlifyIdentity) {
